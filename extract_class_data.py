@@ -4,38 +4,41 @@ import json
 with open('fa21-fa24.json') as f:
     data = json.load(f)
 
-# List to store the extracted enrollment data
-enrollment_data = []
+    course_enrollment = {}
 
-# Loop through each course in the JSON file
-for course_id, course_info in data.items():
-    title = course_info.get('title', '')
-    
-    # Check if the course is CSCI or CIST
-    if 'CSCI' in title or 'CIST' in title:
-        # Loop through sections for each course
-        for section_id, section_info in course_info.get('sections', {}).items():
-            # Extract necessary details for each section
-            section_data = {
-                'course_id': course_id,
-                'title': title,
-                'section_id': section_id,
-                'enrolled': int(section_info['Enrolled']),
-                'class_max': int(section_info['Class Max']),
-                'seats_available': int(section_info['Seats Available']),
-                'instructor': section_info['Instructor'],
-                'location': section_info['Location'],
-                'time': section_info['Time'],
-                'days': section_info['Days']
-            }
-            # Append to the list of enrollment data
-            enrollment_data.append(section_data)
+    for term, subjects in data.items():
+        for subject, courses in subjects.items():
+            if subject in ["CIST", "CSCI"]:  # Filtering only CIST and CSCI subjects
+                for course_code, course_details in courses.items():
+                    if int(course_code) <= 5000:  # Only courses with code ≤ 5000
+                        course_key = f"{subject} {course_code}"  # Format "CIST 1300", "CSCI 1620", etc.
 
-# Now, you can process or display the extracted enrollment data
-for item in enrollment_data:
-    print(item)
+                        # Initialize course entry if not present
+                        if course_key not in course_enrollment:
+                            course_enrollment[course_key] = {}
 
-# Optional: Store the data in a CSV or DataFrame if needed for further analysis
-# import pandas as pd
-# df = pd.DataFrame(enrollment_data)
-# df.to_csv('cs_courses_enrollment.csv', index=False)
+                        # Iterate through sections to extract year and semester from "Date"
+                        for section in course_details["sections"].values():
+                            date_range = section["Date"]
+                            
+                            # Extract year and determine semester
+                            year = date_range.split()[-1]  # Extract the year
+                            
+                            if "Aug" in date_range or "Sep" in date_range:
+                                semester = "Fall"
+                            elif "Jan" in date_range or "Feb" in date_range:
+                                semester = "Spring"
+                            else:
+                                continue  # Skip if the date isn't clear
+
+                            # Ensure the year exists in the dictionary
+                            if year not in course_enrollment[course_key]:
+                                course_enrollment[course_key][year] = {"Fall": 0, "Spring": 0}
+
+                            # Add enrollment to the correct semester
+                            course_enrollment[course_key][year][semester] += int(section["Enrolled"])
+
+# Print the result
+print(json.dumps(course_enrollment, indent=4))
+
+
