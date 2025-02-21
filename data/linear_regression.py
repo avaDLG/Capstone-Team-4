@@ -45,4 +45,12 @@ with open('Capstone-Team-4/data/CS_enrollment.json', 'r') as f:
 
 
     # dump it out and see...
-    print(json.dumps(predictions, indent=4))
+    # print(json.dumps(predictions, indent=4))
+
+    with open("Capstone-Team-4/data/CS_predictions", "w") as f:
+        json.dump(course_enrollment, f, indent=4)
+
+
+    # CIST 1400 --> prediction 211 real 224
+    # CIST 1600 --> P: 81 R: 70
+    # CIST 2100 --> P:188 R: 196
