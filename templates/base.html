@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Capstone Project{% endblock %}</title>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Team 4 Space</h1>
+  </header>
+  
+  <nav>
+    <!-- Navigation links can go here -->
+  </nav>
+  
+  <main>
+    {% block content %}
+    <p>This is the base template. Replace this content in child templates.</p>
+    {% endblock %}
+  </main>
+  
+  <footer>
+    <p>&copy; Spring 2025 Capstone Team 4</p>
+  </footer>
+</body>
+</html>
