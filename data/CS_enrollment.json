@@ -19,20 +19,20 @@
     },
     "CIST 1400": {
         "2021": {
-            "Fall": 350,
+            "Fall": 175,
             "Spring": 0
         },
         "2022": {
-            "Fall": 532,
-            "Spring": 356
+            "Fall": 266,
+            "Spring": 178
         },
         "2023": {
-            "Fall": 468,
-            "Spring": 340
+            "Fall": 234,
+            "Spring": 170
         },
         "2024": {
-            "Fall": 536,
-            "Spring": 448
+            "Fall": 268,
+            "Spring": 224
         }
     },
     "CIST 1600": {
@@ -161,40 +161,23 @@
             "Spring": 100
         }
     },
-    "CSCI 1204": {
-        "2021": {
-            "Fall": 91,
-            "Spring": 0
-        },
-        "2022": {
-            "Fall": 57,
-            "Spring": 52
-        },
-        "2023": {
-            "Fall": 83,
-            "Spring": 62
-        },
-        "2024": {
-            "Fall": 78,
-            "Spring": 52
-        }
-    },
+    "CSCI 1204": {},
     "CSCI 1620": {
         "2021": {
-            "Fall": 278,
+            "Fall": 139,
             "Spring": 0
         },
         "2022": {
-            "Fall": 426,
-            "Spring": 290
+            "Fall": 213,
+            "Spring": 145
         },
         "2023": {
-            "Fall": 434,
-            "Spring": 344
+            "Fall": 217,
+            "Spring": 172
         },
         "2024": {
-            "Fall": 484,
-            "Spring": 334
+            "Fall": 242,
+            "Spring": 167
         }
     },
     "CSCI 2030": {

@@ -2,7 +2,7 @@ import json
 
 # loan json file
 # 
-with open('data/fa21-fa24.json') as f:
+with open('Capstone-Team-4/data/fa21-fa24.json') as f:
     data = json.load(f)
 
     course_enrollment = {}
@@ -23,6 +23,10 @@ with open('data/fa21-fa24.json') as f:
 
                         # interate through sections to find the year and semester
                         for section in course_details["sections"].values():
+                                
+                            #DO NOT DOUBLE COUNT STUDENTS
+                            if section["Type"] == "LAB":  # Ignore labs
+                                continue
                             date_range = section["Date"]
                             
                             # extract year and change month dates to fall or spring
@@ -45,5 +49,5 @@ with open('data/fa21-fa24.json') as f:
 
 #print(json.dumps(course_enrollment, indent=4))
 
-with open("data/CS_enrollment.json", "w") as f:
+with open("Capstone-Team-4/data/CS_enrollment.json", "w") as f:
     json.dump(course_enrollment, f, indent=4)
