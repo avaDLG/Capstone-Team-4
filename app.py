@@ -1,14 +1,23 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, request, redirect, url_for
 import json
 
 app = Flask(__name__)
 
 @app.route("/")
 def index():
-    # Render the base.html template
     return render_template("login_selection.html")
 
-# TODO: write json out to a page 
+@app.route("/login/<method>", methods=["GET", "POST"])
+def login(method):
+    if request.method == "POST":
+        return redirect(url_for("signed_in", username=request.form["username"]))
+    
+    return render_template("login.html", method=method)
+
+@app.route("/signed_in/<username>")
+def signed_in(username):
+    return render_template("signed_in.html", username=username)
+
 @app.route("/regression")
 def linear_regression_output():
     with open('data/cs_predictions.json', 'r') as f:
@@ -27,6 +36,5 @@ def class_filter(class_code):
 
     return json.dumps(cs_enrollment[f"{letter} {number}"]) + "====> Prediction:" + json.dumps(cs_prediction[f"{letter} {number}"])
 
-# TODO: once it's done, remove the debug mode
 if __name__ == '__main__':
-    app.run(debug=True) 
+    app.run(debug=True)
