@@ -15,9 +15,8 @@ def linear_regression_output():
 
     with open('data/CS_predictions.json', 'r') as f:
         CS_predictions = json.load(f)
-        print(CS_predictions)
      
-    return json.dump(CS_predictions, f, indent=4)
+        return jsonify(CS_predictions)
 
 
 # TODO: once it's done, remove the debug mode

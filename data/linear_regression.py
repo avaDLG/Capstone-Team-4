@@ -48,7 +48,7 @@ with open('data/CS_enrollment.json', 'r') as f:
     # print(json.dumps(predictions, indent=4))
 
     with open("data/CS_predictions.json", "w") as f:
-        json.dump(course_enrollment, f, indent=4)
+        json.dump(predictions, f, indent=4)
 
 
     # CIST 1400 --> prediction 211 real 224
