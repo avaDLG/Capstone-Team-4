@@ -29,7 +29,7 @@ def load_json_file(filename):
                             # interate through sections to find the year and semester
                             for section in course_details["sections"].values():
                                     
-                                #DO NOT DOUBLE COUNT STUDENTS
+                                # DO NOT DOUBLE COUNT STUDENTS
                                 if section["Type"] == "LAB":  # Ignore labs
                                     continue
                                 date_range = section["Date"]
@@ -46,7 +46,10 @@ def load_json_file(filename):
 
                                 # Ensure the year exists in the dictionary
                                 if year not in course_enrollment[course_key]:
-                                    course_enrollment[course_key][year] = {"Fall": 0, "Spring": 0}
+                                    course_enrollment[course_key][year] = {}
+
+                                if semester not in course_enrollment[course_key][year]:
+                                    course_enrollment[course_key][year][semester] = 0
 
                                 # Add enrollment to the correct semester
                                 course_enrollment[course_key][year][semester] += int(section["Enrolled"])
@@ -66,6 +69,7 @@ def write_json_file(course_enrollment: dict):
 if __name__ == "__main__": 
     course_enrollment = dict()
     course_enrollment = load_json_file("data/fa21-fa24.json")
+    print(course_enrollment)
     write_json_file(course_enrollment)
 
 

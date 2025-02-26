@@ -1,894 +1,792 @@
 {
     "CIST 1300": {
         "2021": {
-            "Fall": 127,
-            "Spring": 0
+            "Fall": 127
         },
         "2022": {
-            "Fall": 123,
-            "Spring": 97
+            "Spring": 97,
+            "Fall": 123
         },
         "2023": {
-            "Fall": 173,
-            "Spring": 91
+            "Spring": 91,
+            "Fall": 173
         },
         "2024": {
-            "Fall": 132,
-            "Spring": 95
+            "Spring": 95,
+            "Fall": 132
         }
     },
     "CIST 1400": {
         "2021": {
-            "Fall": 175,
-            "Spring": 0
+            "Fall": 175
         },
         "2022": {
-            "Fall": 266,
-            "Spring": 178
+            "Spring": 178,
+            "Fall": 266
         },
         "2023": {
-            "Fall": 234,
-            "Spring": 170
+            "Spring": 170,
+            "Fall": 234
         },
         "2024": {
-            "Fall": 268,
-            "Spring": 224
+            "Spring": 224,
+            "Fall": 268
         }
     },
     "CIST 1600": {
         "2021": {
-            "Fall": 34,
-            "Spring": 0
+            "Fall": 34
         },
         "2022": {
-            "Fall": 67,
-            "Spring": 99
+            "Spring": 99,
+            "Fall": 67
         },
         "2023": {
-            "Fall": 70,
-            "Spring": 70
+            "Spring": 70,
+            "Fall": 70
         },
         "2024": {
-            "Fall": 69,
-            "Spring": 70
+            "Spring": 70,
+            "Fall": 69
         }
     },
     "CIST 2100": {
         "2021": {
-            "Fall": 149,
-            "Spring": 0
+            "Fall": 149
         },
         "2022": {
-            "Fall": 180,
-            "Spring": 126
+            "Spring": 126,
+            "Fall": 180
         },
         "2023": {
-            "Fall": 175,
-            "Spring": 186
+            "Spring": 186,
+            "Fall": 175
         },
         "2024": {
-            "Fall": 209,
-            "Spring": 196
+            "Spring": 196,
+            "Fall": 209
         }
     },
     "CIST 2500": {
         "2021": {
-            "Fall": 102,
-            "Spring": 0
+            "Fall": 102
         },
         "2022": {
-            "Fall": 129,
-            "Spring": 117
+            "Spring": 117,
+            "Fall": 129
         },
         "2023": {
-            "Fall": 121,
-            "Spring": 86
+            "Spring": 86,
+            "Fall": 121
         },
         "2024": {
-            "Fall": 116,
-            "Spring": 105
+            "Spring": 105,
+            "Fall": 116
         }
     },
     "CIST 3000": {
         "2021": {
-            "Fall": 112,
-            "Spring": 0
+            "Fall": 112
         },
         "2022": {
-            "Fall": 155,
-            "Spring": 103
+            "Spring": 103,
+            "Fall": 155
         },
         "2023": {
-            "Fall": 161,
-            "Spring": 140
+            "Spring": 140,
+            "Fall": 161
         },
         "2024": {
-            "Fall": 163,
-            "Spring": 159
+            "Spring": 159,
+            "Fall": 163
         }
     },
     "CIST 3110": {
         "2021": {
-            "Fall": 139,
-            "Spring": 0
+            "Fall": 139
         },
         "2022": {
-            "Fall": 181,
-            "Spring": 139
+            "Spring": 139,
+            "Fall": 181
         },
         "2023": {
-            "Fall": 205,
-            "Spring": 155
+            "Spring": 155,
+            "Fall": 205
         },
         "2024": {
-            "Fall": 189,
-            "Spring": 175
+            "Spring": 175,
+            "Fall": 189
         }
     },
     "CIST 4540": {
         "2021": {
-            "Fall": 3,
-            "Spring": 0
+            "Fall": 3
         },
         "2022": {
-            "Fall": 4,
-            "Spring": 6
+            "Spring": 6,
+            "Fall": 4
         },
         "2023": {
-            "Fall": 2,
-            "Spring": 3
+            "Spring": 3,
+            "Fall": 2
         },
         "2024": {
-            "Fall": 0,
-            "Spring": 5
+            "Spring": 5,
+            "Fall": 0
         }
     },
     "CSCI 1200": {
         "2021": {
-            "Fall": 180,
-            "Spring": 0
+            "Fall": 180
         },
         "2022": {
-            "Fall": 141,
-            "Spring": 63
+            "Spring": 63,
+            "Fall": 141
         },
         "2023": {
-            "Fall": 214,
-            "Spring": 100
+            "Spring": 100,
+            "Fall": 214
         },
         "2024": {
-            "Fall": 197,
-            "Spring": 100
+            "Spring": 100,
+            "Fall": 197
         }
     },
     "CSCI 1204": {},
     "CSCI 1620": {
         "2021": {
-            "Fall": 139,
-            "Spring": 0
+            "Fall": 139
         },
         "2022": {
-            "Fall": 213,
-            "Spring": 145
+            "Spring": 145,
+            "Fall": 213
         },
         "2023": {
-            "Fall": 217,
-            "Spring": 172
+            "Spring": 172,
+            "Fall": 217
         },
         "2024": {
-            "Fall": 242,
-            "Spring": 167
+            "Spring": 167,
+            "Fall": 242
         }
     },
     "CSCI 2030": {
         "2021": {
-            "Fall": 83,
-            "Spring": 0
+            "Fall": 83
         },
         "2022": {
-            "Fall": 139,
-            "Spring": 118
+            "Spring": 118,
+            "Fall": 139
         },
         "2023": {
-            "Fall": 174,
-            "Spring": 132
+            "Spring": 132,
+            "Fall": 174
         },
         "2024": {
-            "Fall": 174,
-            "Spring": 138
+            "Spring": 138,
+            "Fall": 174
         }
     },
     "CSCI 2240": {
         "2021": {
-            "Fall": 71,
-            "Spring": 0
+            "Fall": 71
         },
         "2022": {
-            "Fall": 116,
-            "Spring": 82
+            "Spring": 82,
+            "Fall": 116
         },
         "2023": {
-            "Fall": 129,
-            "Spring": 96
+            "Spring": 96,
+            "Fall": 129
         },
         "2024": {
-            "Fall": 110,
-            "Spring": 109
+            "Spring": 109,
+            "Fall": 110
         }
     },
     "CSCI 2410": {
         "2021": {
-            "Fall": 16,
-            "Spring": 0
+            "Fall": 16
         },
         "2022": {
-            "Fall": 21,
-            "Spring": 0
+            "Fall": 21
         },
         "2023": {
-            "Fall": 38,
-            "Spring": 0
+            "Fall": 38
         },
         "2024": {
-            "Fall": 41,
-            "Spring": 0
+            "Fall": 41
         }
     },
     "CSCI 2620": {
         "2021": {
-            "Fall": 21,
-            "Spring": 0
+            "Fall": 21
         },
         "2022": {
-            "Fall": 32,
-            "Spring": 0
+            "Fall": 32
         },
         "2023": {
-            "Fall": 29,
-            "Spring": 0
+            "Fall": 29
         },
         "2024": {
-            "Fall": 29,
-            "Spring": 0
+            "Fall": 29
         }
     },
     "CSCI 2850": {
         "2021": {
-            "Fall": 35,
-            "Spring": 0
+            "Fall": 35
         },
         "2022": {
-            "Fall": 35,
-            "Spring": 36
+            "Spring": 36,
+            "Fall": 35
         },
         "2023": {
-            "Fall": 34,
-            "Spring": 33
+            "Spring": 33,
+            "Fall": 34
         },
         "2024": {
-            "Fall": 40,
-            "Spring": 37
+            "Spring": 37,
+            "Fall": 40
         }
     },
     "CSCI 3100": {
         "2021": {
-            "Fall": 13,
-            "Spring": 0
+            "Fall": 13
         },
         "2022": {
-            "Fall": 8,
-            "Spring": 10
+            "Spring": 10,
+            "Fall": 8
         },
         "2023": {
-            "Fall": 15,
-            "Spring": 10
+            "Spring": 10,
+            "Fall": 15
         },
         "2024": {
-            "Fall": 11,
-            "Spring": 14
+            "Spring": 14,
+            "Fall": 11
         }
     },
     "CSCI 3320": {
         "2021": {
-            "Fall": 105,
-            "Spring": 0
+            "Fall": 105
         },
         "2022": {
-            "Fall": 152,
-            "Spring": 96
+            "Spring": 96,
+            "Fall": 152
         },
         "2023": {
-            "Fall": 166,
-            "Spring": 100
+            "Spring": 100,
+            "Fall": 166
         },
         "2024": {
-            "Fall": 196,
-            "Spring": 135
+            "Spring": 135,
+            "Fall": 196
         }
     },
     "CSCI 3470": {
         "2021": {
-            "Fall": 10,
-            "Spring": 0
+            "Fall": 10
         },
         "2022": {
-            "Fall": 16,
-            "Spring": 0
+            "Fall": 16
         },
         "2023": {
-            "Fall": 15,
-            "Spring": 0
+            "Fall": 15
         }
     },
     "CSCI 3510": {
         "2021": {
-            "Fall": 18,
-            "Spring": 0
+            "Fall": 18
         },
         "2022": {
-            "Fall": 29,
-            "Spring": 0
+            "Fall": 29
         },
         "2023": {
-            "Fall": 24,
-            "Spring": 0
+            "Fall": 24
         },
         "2024": {
-            "Fall": 16,
-            "Spring": 0
+            "Fall": 16
         }
     },
     "CSCI 3550": {
         "2021": {
-            "Fall": 69,
-            "Spring": 0
+            "Fall": 69
         },
         "2022": {
-            "Fall": 114,
-            "Spring": 64
+            "Spring": 64,
+            "Fall": 114
         },
         "2023": {
-            "Fall": 114,
-            "Spring": 70
+            "Spring": 70,
+            "Fall": 114
         },
         "2024": {
-            "Fall": 135,
-            "Spring": 84
+            "Spring": 84,
+            "Fall": 135
         }
     },
     "CSCI 3660": {
         "2021": {
-            "Fall": 69,
-            "Spring": 0
+            "Fall": 69
         },
         "2022": {
-            "Fall": 68,
-            "Spring": 59
+            "Spring": 59,
+            "Fall": 68
         },
         "2023": {
-            "Fall": 78,
-            "Spring": 62
+            "Spring": 62,
+            "Fall": 78
         },
         "2024": {
-            "Fall": 118,
-            "Spring": 65
+            "Spring": 65,
+            "Fall": 118
         }
     },
     "CSCI 3710": {
         "2021": {
-            "Fall": 82,
-            "Spring": 0
+            "Fall": 82
         },
         "2022": {
-            "Fall": 81,
-            "Spring": 80
+            "Spring": 80,
+            "Fall": 81
         },
         "2023": {
-            "Fall": 112,
-            "Spring": 88
+            "Spring": 88,
+            "Fall": 112
         },
         "2024": {
-            "Fall": 138,
-            "Spring": 119
+            "Spring": 119,
+            "Fall": 138
         }
     },
     "CSCI 3830": {
         "2021": {
-            "Fall": 20,
-            "Spring": 0
+            "Fall": 20
         },
         "2022": {
-            "Fall": 28,
-            "Spring": 33
+            "Spring": 33,
+            "Fall": 28
         },
         "2023": {
-            "Fall": 29,
-            "Spring": 0
+            "Fall": 29
         },
         "2024": {
-            "Fall": 25,
-            "Spring": 35
+            "Spring": 35,
+            "Fall": 25
         }
     },
     "CSCI 3850": {
         "2021": {
-            "Fall": 17,
-            "Spring": 0
+            "Fall": 17
         }
     },
     "CSCI 4000": {
         "2021": {
-            "Fall": 37,
-            "Spring": 0
+            "Fall": 37
         },
         "2022": {
-            "Fall": 51,
-            "Spring": 49
+            "Spring": 49,
+            "Fall": 51
         },
         "2023": {
-            "Fall": 40,
-            "Spring": 51
+            "Spring": 51,
+            "Fall": 40
         },
         "2024": {
-            "Fall": 34,
-            "Spring": 70
+            "Spring": 70,
+            "Fall": 34
         }
     },
     "CSCI 4220": {
         "2021": {
-            "Fall": 51,
-            "Spring": 0
+            "Fall": 51
         },
         "2022": {
-            "Fall": 65,
-            "Spring": 57
+            "Spring": 57,
+            "Fall": 65
         },
         "2023": {
-            "Fall": 53,
-            "Spring": 54
+            "Spring": 54,
+            "Fall": 53
         },
         "2024": {
-            "Fall": 62,
-            "Spring": 63
+            "Spring": 63,
+            "Fall": 62
         }
     },
     "CSCI 4300": {
         "2021": {
-            "Fall": 15,
-            "Spring": 0
+            "Fall": 15
         },
         "2022": {
-            "Fall": 8,
-            "Spring": 0
+            "Fall": 8
         },
         "2023": {
-            "Fall": 1,
-            "Spring": 0
+            "Fall": 1
         },
         "2024": {
-            "Fall": 11,
-            "Spring": 0
+            "Fall": 11
         }
     },
     "CSCI 4350": {
         "2021": {
-            "Fall": 94,
-            "Spring": 0
+            "Fall": 94
         },
         "2022": {
-            "Fall": 81,
-            "Spring": 82
+            "Spring": 82,
+            "Fall": 81
         },
         "2023": {
-            "Fall": 83,
-            "Spring": 72
+            "Spring": 72,
+            "Fall": 83
         },
         "2024": {
-            "Fall": 118,
-            "Spring": 91
+            "Spring": 91,
+            "Fall": 118
         }
     },
     "CSCI 4380": {
         "2021": {
-            "Fall": 4,
-            "Spring": 0
+            "Fall": 4
         },
         "2022": {
-            "Fall": 5,
-            "Spring": 7
+            "Spring": 7,
+            "Fall": 5
         },
         "2023": {
-            "Fall": 2,
-            "Spring": 6
+            "Spring": 6,
+            "Fall": 2
         },
         "2024": {
-            "Fall": 5,
-            "Spring": 6
+            "Spring": 6,
+            "Fall": 5
         }
     },
     "CSCI 4450": {
         "2021": {
-            "Fall": 27,
-            "Spring": 0
+            "Fall": 27
         },
         "2022": {
-            "Fall": 25,
-            "Spring": 29
+            "Spring": 29,
+            "Fall": 25
         },
         "2023": {
-            "Fall": 40,
-            "Spring": 30
+            "Spring": 30,
+            "Fall": 40
         },
         "2024": {
-            "Fall": 47,
-            "Spring": 29
+            "Spring": 29,
+            "Fall": 47
         }
     },
     "CSCI 4500": {
         "2021": {
-            "Fall": 58,
-            "Spring": 0
+            "Fall": 58
         },
         "2022": {
-            "Fall": 97,
-            "Spring": 80
+            "Spring": 80,
+            "Fall": 97
         },
         "2023": {
-            "Fall": 94,
-            "Spring": 77
+            "Spring": 77,
+            "Fall": 94
         },
         "2024": {
-            "Fall": 75,
-            "Spring": 74
+            "Spring": 74,
+            "Fall": 75
         }
     },
     "CSCI 4830": {
         "2021": {
-            "Fall": 67,
-            "Spring": 0
+            "Fall": 67
         },
         "2022": {
-            "Fall": 71,
-            "Spring": 52
+            "Spring": 52,
+            "Fall": 71
         },
         "2023": {
-            "Fall": 88,
-            "Spring": 51
+            "Spring": 51,
+            "Fall": 88
         },
         "2024": {
-            "Fall": 98,
-            "Spring": 63
+            "Spring": 63,
+            "Fall": 98
         }
     },
     "CSCI 4850": {
         "2021": {
-            "Fall": 22,
-            "Spring": 0
+            "Fall": 22
         },
         "2022": {
-            "Fall": 30,
-            "Spring": 29
+            "Spring": 29,
+            "Fall": 30
         },
         "2023": {
-            "Fall": 31,
-            "Spring": 22
+            "Spring": 22,
+            "Fall": 31
         },
         "2024": {
-            "Fall": 66,
-            "Spring": 0
+            "Fall": 66
         }
     },
     "CSCI 4890": {
         "2021": {
-            "Fall": 12,
-            "Spring": 0
+            "Fall": 12
         },
         "2022": {
-            "Fall": 8,
-            "Spring": 0
+            "Fall": 8
         }
     },
     "CSCI 4950": {
         "2021": {
-            "Fall": 1,
-            "Spring": 0
+            "Fall": 1
         },
         "2022": {
-            "Fall": 36,
-            "Spring": 18
+            "Spring": 18,
+            "Fall": 36
         },
         "2023": {
-            "Fall": 23,
-            "Spring": 15
+            "Spring": 15,
+            "Fall": 23
         },
         "2024": {
-            "Fall": 32,
-            "Spring": 9
+            "Spring": 9,
+            "Fall": 32
         }
     },
     "CSCI 4970": {
         "2021": {
-            "Fall": 39,
-            "Spring": 0
+            "Fall": 39
         },
         "2022": {
-            "Fall": 48,
-            "Spring": 53
+            "Spring": 53,
+            "Fall": 48
         },
         "2023": {
-            "Fall": 39,
-            "Spring": 51
+            "Spring": 51,
+            "Fall": 39
         },
         "2024": {
-            "Fall": 37,
-            "Spring": 67
+            "Spring": 67,
+            "Fall": 37
         }
     },
     "CSCI 4990": {
         "2021": {
-            "Fall": 0,
-            "Spring": 0
+            "Fall": 0
         },
         "2022": {
-            "Fall": 0,
-            "Spring": 0
+            "Spring": 0,
+            "Fall": 0
         },
         "2023": {
-            "Fall": 2,
-            "Spring": 0
+            "Spring": 0,
+            "Fall": 2
         },
         "2024": {
-            "Fall": 0,
-            "Spring": 2
+            "Spring": 2,
+            "Fall": 0
         }
     },
     "CSCI 1280": {
         "2022": {
-            "Fall": 0,
             "Spring": 52
         },
         "2023": {
-            "Fall": 0,
             "Spring": 49
         },
         "2024": {
-            "Fall": 0,
             "Spring": 40
         }
     },
     "CSCI 2510": {
         "2022": {
-            "Fall": 0,
             "Spring": 35
         },
         "2023": {
-            "Fall": 0,
             "Spring": 35
         },
         "2024": {
-            "Fall": 0,
             "Spring": 30
         }
     },
     "CSCI 2980": {
         "2022": {
-            "Fall": 0,
             "Spring": 31
         },
         "2023": {
-            "Fall": 0,
             "Spring": 34
         },
         "2024": {
-            "Fall": 0,
             "Spring": 41
         }
     },
     "CSCI 3300": {
         "2022": {
-            "Fall": 0,
             "Spring": 12
         }
     },
     "CSCI 3450": {
         "2022": {
-            "Fall": 0,
             "Spring": 25
         },
         "2023": {
-            "Fall": 0,
             "Spring": 27
         },
         "2024": {
-            "Fall": 0,
             "Spring": 30
         }
     },
     "CSCI 4010": {
         "2022": {
-            "Fall": 0,
             "Spring": 4
         },
         "2024": {
-            "Fall": 0,
             "Spring": 5
         }
     },
     "CSCI 4260": {
         "2022": {
-            "Fall": 0,
             "Spring": 25
         },
         "2023": {
-            "Fall": 0,
             "Spring": 25
         },
         "2024": {
-            "Fall": 0,
             "Spring": 28
         }
     },
     "CSCI 4310": {
         "2022": {
-            "Fall": 0,
             "Spring": 1
         },
         "2023": {
-            "Fall": 0,
             "Spring": 3
         },
         "2024": {
-            "Fall": 0,
             "Spring": 0
         }
     },
     "CSCI 4560": {
         "2022": {
-            "Fall": 0,
             "Spring": 7
         },
         "2023": {
-            "Fall": 0,
             "Spring": 8
         },
         "2024": {
-            "Fall": 0,
             "Spring": 6
         }
     },
     "CSCI 4620": {
         "2022": {
-            "Fall": 0,
             "Spring": 33
         },
         "2023": {
-            "Fall": 0,
             "Spring": 34
         },
         "2024": {
-            "Fall": 0,
             "Spring": 34
         }
     },
     "CSCI 4430": {},
     "CIST 1010": {
         "2022": {
-            "Fall": 124,
-            "Spring": 0
+            "Fall": 124
         },
         "2023": {
-            "Fall": 159,
-            "Spring": 0
+            "Fall": 159
         },
         "2024": {
-            "Fall": 154,
-            "Spring": 0
+            "Fall": 154
         }
     },
     "CSCI 4150": {
         "2022": {
-            "Fall": 22,
-            "Spring": 0
+            "Fall": 22
         },
         "2023": {
-            "Fall": 23,
-            "Spring": 0
+            "Fall": 23
         },
         "2024": {
-            "Fall": 25,
-            "Spring": 0
+            "Fall": 25
         }
     },
     "CSCI 4250": {
         "2022": {
-            "Fall": 51,
-            "Spring": 0
+            "Fall": 51
         },
         "2023": {
-            "Fall": 56,
-            "Spring": 0
+            "Fall": 56
         },
         "2024": {
-            "Fall": 30,
-            "Spring": 0
+            "Fall": 30
         }
     },
     "CSCI 4470": {
         "2022": {
-            "Fall": 11,
-            "Spring": 0
+            "Fall": 11
         },
         "2024": {
-            "Fall": 27,
-            "Spring": 0
+            "Fall": 27
         }
     },
     "CSCI 4650": {
         "2022": {
-            "Fall": 25,
-            "Spring": 0
+            "Fall": 25
         },
         "2023": {
-            "Fall": 20,
-            "Spring": 24
+            "Spring": 24,
+            "Fall": 20
         },
         "2024": {
-            "Fall": 30,
-            "Spring": 22
+            "Spring": 22,
+            "Fall": 30
         }
     },
     "CSCI 2830": {
         "2023": {
-            "Fall": 0,
             "Spring": 17
         },
         "2024": {
-            "Fall": 0,
             "Spring": 30
         }
     },
     "CSCI 2960": {
         "2023": {
-            "Fall": 0,
             "Spring": 6
         },
         "2024": {
-            "Fall": 0,
             "Spring": 7
         }
     },
     "CSCI 4200": {
         "2023": {
-            "Fall": 0,
             "Spring": 1
         },
         "2024": {
-            "Fall": 0,
             "Spring": 3
         }
     },
     "CSCI 2040": {
         "2024": {
-            "Fall": 49,
-            "Spring": 35
+            "Spring": 35,
+            "Fall": 49
         }
     },
     "CSCI 4320": {
         "2024": {
-            "Fall": 0,
             "Spring": 2
         }
     },
     "CIST 2010": {
         "2024": {
-            "Fall": 21,
-            "Spring": 0
+            "Fall": 21
         }
     },
     "CSCI 4100": {
         "2024": {
-            "Fall": 27,
-            "Spring": 0
+            "Fall": 27
         }
     }
 }
