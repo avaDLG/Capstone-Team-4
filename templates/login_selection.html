@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Login Method</title>
+    <title>MavLINK Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <style>
         /* General Styling */
@@ -117,11 +117,11 @@
 
     <div class="content">
         <div class="login-container">
-            <h2>Select Login Method</h2>
+            <h2>Log In With:</h2>
             <div class="button-container">
-                <a href="{{ url_for('login', method='school_email') }}" class="login-option">Login with School Email</a>
-                <a href="{{ url_for('login', method='school_id') }}" class="login-option">Login with School ID</a>
-                <a href="{{ url_for('login', method='other') }}" class="login-option">Other Login Methods</a>
+                <a href="{{ url_for('login', method='school_email') }}" class="login-option">UNO NETID</a>
+                <a href="{{ url_for('login', method='school_id') }}" class="login-option">NUID</a>
+                <a href="{{ url_for('login', method='other') }}" class="login-option">GUEST</a>
             </div>
         </div>
     </div>
