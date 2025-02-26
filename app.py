@@ -36,5 +36,23 @@ def class_filter(class_code):
 
     return json.dumps(cs_enrollment[f"{letter} {number}"]) + "====> Prediction:" + json.dumps(cs_prediction[f"{letter} {number}"])
 
+@app.route("/login-selection")
+def login_selection():
+    return render_template("login_selection.html")
+
+@app.route("/login/<method>", methods=["GET", "POST"])
+def login_page(method):
+    if request.method == "POST":
+        username = request.form.get("j_username")
+        return redirect(url_for("signed_in", username=username))
+
+    return render_template("login.html", method=method)
+
+@app.route("/signed-in")
+def signed_in_page():
+    username = request.args.get("username", "Guest")
+    return render_template("signed_in.html", username=username)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
