@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     # Render the base.html template
-    return render_template("base.html")
+    return render_template("login_selection.html")
 
 # TODO: write json out to a page 
 @app.route("/regression")

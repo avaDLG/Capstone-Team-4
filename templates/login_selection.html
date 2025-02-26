@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Login Method</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* General Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #000;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            background-color: black;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+        .header .logo {
+            max-width: 200px;
+            height: auto;
+        }
+
+        
+        .content {
+            margin-top: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        .login-container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border: 3px solid #b71c1c;
+            width: 350px;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+
+        .login-container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #b71c1c;
+            border-bottom: 2px solid #b71c1c;
+            padding-bottom: 10px;
+        }
+
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .login-option {
+            display: block;
+            width: 250px;
+            padding: 14px;
+            margin: 10px 0;
+            text-align: center;
+            background: #b71c1c;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            border: none;
+        }
+
+        .login-option:hover {
+            background: #8a0000;
+            transform: translateY(-2px);
+            box-shadow: 5px 5px 15px rgba(183, 28, 28, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{{ url_for('static', filename='university_logo.png') }}" alt="University Logo" class="logo">
+    </div>
+
+    <div class="content">
+        <div class="login-container">
+            <h2>Select Login Method</h2>
+            <div class="button-container">
+                <a href="{{ url_for('login', method='school_email') }}" class="login-option">Login with School Email</a>
+                <a href="{{ url_for('login', method='school_id') }}" class="login-option">Login with School ID</a>
+                <a href="{{ url_for('login', method='other') }}" class="login-option">Other Login Methods</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        .header {
+            background-color: black; 
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo {
+            max-width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{{ url_for('static', filename='university_logo.png') }}" alt="University Logo" class="logo">
+    </div>
+    
+    <div class="login-container">
+        <h2>Login with {{ method.replace('_', ' ').title() }}</h2>
+        <form action="{{ url_for('login', method=method) }}" method="post">
+            <label for="username">Username</label>
+            <input class="UnoUserName" id="username" name="j_username" type="text" autocomplete="off" required>
+            
+            <label for="password">Password</label>
+            <input class="UnoPassword" id="password" name="j_password" type="password" autocomplete="off" required>
+            
+            <p><a href="https://trueyou.nebraska.edu/account/forgot-password" target="_blank">Forgot Your Password?</a></p>
+            
+            <button class="btn-cta btn-huge" type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>
