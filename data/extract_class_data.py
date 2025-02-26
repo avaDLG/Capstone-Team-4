@@ -45,14 +45,14 @@ def load_json_file(filename):
                                     continue  # TEST THIS!!!
 
                                 # Ensure the year exists in the dictionary
-                                if year not in course_enrollment[course_key]:
-                                    course_enrollment[course_key][year] = {}
+                                if semester not in course_enrollment[course_key]:
+                                    course_enrollment[course_key][semester] = {}
 
-                                if semester not in course_enrollment[course_key][year]:
-                                    course_enrollment[course_key][year][semester] = 0
+                                if year not in course_enrollment[course_key][semester]:
+                                    course_enrollment[course_key][semester][year] = 0
 
                                 # Add enrollment to the correct semester
-                                course_enrollment[course_key][year][semester] += int(section["Enrolled"])
+                                course_enrollment[course_key][semester][year] += int(section["Enrolled"])
 
     # print(json.dumps(course_enrollment, indent=4))
     return course_enrollment
