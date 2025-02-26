@@ -7,7 +7,7 @@ from sklearn.linear_model import LinearRegression
 
 # open up file with extracted data
 # i honestly dont know why i wont use a realtive path -- LOOK AT LATER
-with open('data/CS_enrollment.json', 'r') as f:
+with open('data/cs_enrollment.json', 'r') as f:
     course_enrollment = json.load(f)
 
     # predict enrollment for next semester --> spring 2024 current semester
@@ -47,7 +47,7 @@ with open('data/CS_enrollment.json', 'r') as f:
     # dump it out and see...
     # print(json.dumps(predictions, indent=4))
 
-    with open("data/CS_predictions.json", "w") as f:
+    with open("data/cs_predictions.json", "w") as f:
         json.dump(course_enrollment, f, indent=4)
 
 
