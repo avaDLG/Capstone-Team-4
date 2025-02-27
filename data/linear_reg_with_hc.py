@@ -54,10 +54,9 @@ def linear_regression_run(input_file_path, sem):
                             predictions[course][semester] = {}
 
                         predictions[course][semester][year] = math.ceil(predicted_fall_2024[0])
-                        print(predictions)
+                        #print(predictions)
 
     with open("data/cs_predictions.json", "w") as f:
         json.dump(predictions, f, indent=4)
-
 
 linear_regression_run('data/cs_enrollment.json', "Fall")
