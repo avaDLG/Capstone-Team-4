@@ -10,27 +10,28 @@ from sklearn.linear_model import LinearRegression
 with open('data/cs_enrollment.json', 'r') as f:
     course_enrollment = json.load(f)
 
-    # predict enrollment for next semester --> spring 2024 current semester
+    # predict enrollment for next semester 
     predictions = {}
 
-    for course, years in course_enrollment.items():
+    for course, semesters in course_enrollment.items():
         X = []
         y = []
 
-        for year, semesters in years.items():
-            for semester, students in semesters.items():
-                sem_val = 0 if semester == "Fall" else 1  # encode Fall=0, Spring=1
+        for semester, years in semesters.items():  # Now semester comes first
+            sem_val = 0 if semester == "Fall" else 1  # Encode Fall=0, Spring=1
+            
+            for year, students in years.items():  
                 X.append([int(year), sem_val])
                 y.append(students)
 
-        if len(X) > 1:  # only apply regression if there's enough data
+        if len(X) > 1:  # Only apply regression if there's enough data
             model = LinearRegression()
             model.fit(X, y)
 
-            # predict next semester's enrollment
+            # Predict next semester's enrollment
             last_year = max(map(int, years.keys()))
-            last_semester = "Fall" if "Spring" in years[str(last_year)] else "Spring"
-            
+            last_semester = "Fall" if "Spring" in semesters else "Spring"
+
             if last_semester == "Fall":
                 next_semester = "Spring"
                 next_year = last_year
