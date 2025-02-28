@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signed In</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <style>
+        .header {
+            background-color: black;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .header .logo {
+            max-width: 200px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="{{ url_for('static', filename='university_logo.png') }}" alt="University Logo" class="logo">
+    </div>
+
+    <div class="success-container">
+        <h2>Welcome, {{ username }}!</h2>
+        <p>You have successfully signed in.</p>
+        <a href="{{ url_for('login') }}">Go back to Login</a>
+    </div>
+</body>
+</html>
