@@ -10,7 +10,7 @@ def linear_regression_run(input_file_path, sem):
     """
     This function provides the linear regression based on the previous semesters
     param: the path to the input json file 
-    return: none. prediction is written to the cs_predictions.json 
+    return: none. prediction is written to the cs_predictions_with_hc.json 
     """
     
     predictions = {}
@@ -25,7 +25,6 @@ def linear_regression_run(input_file_path, sem):
             for year, num_students in years.items():
                 X.append([int(year), num_students])
     X = np.array(X)
-    print(X)
 
     # open up enrollment file to get the number students as y 
     with open(input_file_path, 'r') as f:
@@ -45,8 +44,9 @@ def linear_regression_run(input_file_path, sem):
                         
                         # predict next semester's enrollment
                         last_year = int(X[-1][0])
-                        print(course, semester, year)
-                        predicted_fall_2024 = model.predict(np.array([[2024, 1224]])) 
+                        #print(course, semester, year)
+                        #print(X)
+                        predicted_fall_2024 = model.predict([X[-1]])
 
                         if course not in predictions: 
                             predictions[course] = {}
@@ -54,9 +54,9 @@ def linear_regression_run(input_file_path, sem):
                             predictions[course][semester] = {}
 
                         predictions[course][semester][year] = math.ceil(predicted_fall_2024[0])
-                        #print(predictions)
 
-    with open("data/cs_predictions.json", "w") as f:
+    with open("data/cs_predictions_with_hc.json", "w") as f:
         json.dump(predictions, f, indent=4)
 
-linear_regression_run('data/cs_enrollment.json', "Fall")
+if __name__ == "__main__":
+    linear_regression_run('data/cs_enrollment.json', "Fall")

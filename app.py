@@ -22,7 +22,8 @@ def signed_in(username):
 def linear_regression_output():
     with open('data/cs_predictions.json', 'r') as f:
         cs_predictions = json.load(f)
-        return jsonify(cs_predictions)
+    
+    return jsonify(cs_predictions)
     
 @app.route("/filter/<class_code>")
 def class_filter(class_code):
@@ -33,8 +34,17 @@ def class_filter(class_code):
         cs_enrollment = json.load(f)
     with open('data/cs_predictions.json', 'r') as f:
         cs_prediction = json.load(f)
+    with open('data/cs_predictions_with_hc.json', 'r') as f:
+        cs_prediction_hc = json.load(f)
+    
+    enrollment = cs_enrollment[f"{letter} {number}"]
+    prediction = cs_prediction[f"{letter} {number}"]
+    prediction_hc = cs_prediction_hc[f"{letter} {number}"]
 
-    return json.dumps(cs_enrollment[f"{letter} {number}"]) + "====> Prediction:" + json.dumps(cs_prediction[f"{letter} {number}"])
+    return render_template("data_result.html", 
+                           cs_enrollment=enrollment, 
+                           cs_prediction=prediction, 
+                           cs_prediction_hc=prediction_hc)
 
 @app.route("/login-selection")
 def login_selection():

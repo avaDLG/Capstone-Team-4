@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capstone Project - Team 4</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        h1 { text-align: center; }
+        .container { max-width: 800px; margin: auto; }
+        .box { background: #f4f4f4; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+        h2 { color: #333; }
+        pre { background: #fff; padding: 10px; border-radius: 5px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2> Enrollment & Predictions (CS classes only)</h2>
+
+        <div class="box">
+            <h3>Class Enrollment Data</h3>
+            <pre>{{ cs_enrollment | tojson(indent=4) }}</pre>
+        </div>
+
+        <div class="box">
+            <h3>Predictions from Linear Regression w/o HeadCount</h3>
+            <p>This LR model bases the prediction off the class enrollment students of previous semesters (both Fall and Spring semesters)</p>
+            <pre>{{ cs_prediction | tojson(indent=4) }}</pre>
+        </div>
+
+        <div class="box">
+            <h3> Predictions from Linear Regression w/ HeadCount</h3>
+            <p>This LR model also takes in the total headcounts of College of IS&T to provide predictions. So far, the Fall 2024 prediction result is only available if at least 4 previous Fall semesters data are available </p>
+            <pre>{{ cs_prediction_hc | tojson(indent=4) }}</pre>
+        </div>
+    </div>
+</body>
+</html>
