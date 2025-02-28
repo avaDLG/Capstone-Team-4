@@ -3,8 +3,9 @@ University of Nebraska at Omaha code repository for Capstone Team 4 Spring 2025
 
 # Code Milesone 1
 1. Introduction:
-This is an application to predict Computer Science class sizes for the University of Nebraska at Omaha. Every semester the CS administration must manually look at data from previous semesters to set the number of student spots avaliable for the upcoming semester. 
 
+ This is an application to predict Computer Science class sizes for the University of Nebraska at Omaha. Every semester the CS administration must manually look at data from previous semesters to set the number of student spots avaliable for the upcoming semester. 
+ 
  To run the application locally run the app.py file and head http://127.0.0.1:5000/ The sign in page does not work ~yet~ but it will soon! You can see the UNO logo and future sign-in options. http://127.0.0.1:5000/regression is where you can see the regression model output (just in json format for now). And if you would like to filter by class .... http://127.0.0.1:5000/filter/CIST1400 use filter and the class code and number to be able to search for all data (past and predicted) for that specific class. 
 
 2. Release Notes:
