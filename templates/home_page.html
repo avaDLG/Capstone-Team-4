@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Course Projection Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Navigation</h2>
+        <a href="#" class="nav-button">Home</a>
+        <a href="{{ url_for('projection') }}" class="nav-button">Projection Page</a>
+    </div>
+
+    <div class="main-content">
+        <p class="welcome">Welcome to the Home Page!</p>
+    </div>
+</body>
+</html>
