@@ -1,20 +1,16 @@
 import pytest
-from my_project import create_app
+from app import app
 
-@pytest.fixture()
-def app():
-    app = create_app()
-    app.config.update({
-        "TESTING": True,
-    })
-
-    # other setup can go here
-
-    yield app
-
-    # clean up / reset resources here
+@pytest.fixture
+def client():
+    with app.test_client() as client:
+        yield client
 
 
-@pytest.fixture()
-def client(app):
-    return app.test_client()
+def test_class_filter(client):
+    
+    response = client.get("/filter-enrollment/CSCI1620")
+    
+    assert response.status_code == 200
+
+    assert b'{"Fall":{"2021":139,"2022":213,"2023":217,"2024":242},"Spring":{"2022":145,"2023":172,"2024":167}}\n' in response.data

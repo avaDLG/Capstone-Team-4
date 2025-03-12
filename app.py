@@ -24,8 +24,21 @@ def linear_regression_output():
         cs_predictions = json.load(f)
     
     return jsonify(cs_predictions)
+
+@app.route("/filter-enrollment/<class_code>", methods=["GET"])
+def class_filter_enrollment(class_code):
+    letter = class_code[:4]
+    number = class_code[4:]
+
+    with open('data/cs_enrollment.json', 'r') as f:
+        cs_enrollment = json.load(f)
     
-@app.route("/filter/<class_code>")
+    enrollment = cs_enrollment[f"{letter} {number}"]
+
+    return jsonify(enrollment)
+
+
+@app.route("/filter/<class_code>", methods=["GET"])
 def class_filter(class_code):
     letter = class_code[:4]
     number = class_code[4:]
