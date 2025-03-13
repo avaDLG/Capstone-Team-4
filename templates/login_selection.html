@@ -37,7 +37,13 @@
             height: auto;
         }
 
-        
+        .header .title {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
         .content {
             margin-top: 80px;
             display: flex;
@@ -58,7 +64,6 @@
             animation: fadeIn 0.8s ease-in-out;
         }
 
-
         .login-container h2 {
             font-size: 24px;
             margin-bottom: 20px;
@@ -68,7 +73,6 @@
             border-bottom: 2px solid #b71c1c;
             padding-bottom: 10px;
         }
-
 
         .button-container {
             display: flex;
@@ -114,6 +118,7 @@
 <body>
     <div class="header">
         <img src="{{ url_for('static', filename='university_logo.png') }}" alt="University Logo" class="logo">
+        <span class="title">University of Nebraska at Omaha</span>
     </div>
 
     <div class="content">
