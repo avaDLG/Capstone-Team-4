@@ -68,7 +68,7 @@ def write_json_file(course_enrollment: dict):
 
 if __name__ == "__main__": 
     course_enrollment = dict()
-    course_enrollment = load_json_file("data/fa21-fa24.json")
+    course_enrollment = load_json_file("data/cist_csci_fall11_fall24.json")
     #print(course_enrollment)
     write_json_file(course_enrollment)
 

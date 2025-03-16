@@ -1,9 +1,8 @@
 # ava's first attempt at linear regression to predict cs class enrollment
 import json
 import numpy as np
-import pandas as pd
-from pandas import Series
-import math 
+import math
+import matplotlib.pyplot as plt 
 from sklearn.linear_model import LinearRegression
 
 def linear_regression_run(input_file_path, sem): 
@@ -58,5 +57,53 @@ def linear_regression_run(input_file_path, sem):
     with open("data/cs_predictions_with_hc.json", "w") as f:
         json.dump(predictions, f, indent=4)
 
+def import_data(class_code, sem):
+    
+    """
+    This function reads in the data from cs_enrollment.json for the class code
+    """
+
+    with open('data/cist_head_count.json', 'r') as f:
+        head_count = json.load(f)
+    X_vals = []
+    for semester, years in head_count.items():
+        if semester == sem: 
+            for num_students in years.values():
+                X_vals.append(num_students)
+    
+    y_vals = []
+    with open('data/cs_enrollment.json', 'r') as f:
+        course_enrollment = json.load(f)
+
+        for semester, years in course_enrollment[class_code].items():
+            if semester == sem: 
+                for year, num_stu in years.items():
+                    y_vals.append(num_stu)
+
+    # Fit a regression line
+    m, b = np.polyfit(X_vals, y_vals, 1)  # Linear fit (y = mx + b)
+
+    # Scatter plot
+    plt.scatter(X_vals, y_vals, color='blue', label="Actual Data")
+    plt.plot(X_vals, [m*x + b for x in X_vals], color='red', label="Best Fit Line")
+
+    # Labels and title
+    plt.xlabel("Total College Headcount")
+    plt.ylabel(f"{class_code} Enrollments")
+    plt.title(f"{class_code} vs College Headcount")
+    plt.legend()
+    plt.show()
+
 if __name__ == "__main__":
-    linear_regression_run('data/cs_enrollment.json', "Fall")
+
+    print("Select an option:")
+    print("1 - Run the Model")
+    print("2 - Graph a class enrollment")
+    user_input = int(input("Option: "))
+
+    if user_input == 1: 
+        linear_regression_run('data/cs_enrollment.json', "Fall")
+    elif user_input == 2: 
+        class_code = input("Enter class code (eg. CSCI 1620): ").strip()
+        fall = input("Fall/Spring (case sensitive) ").strip()
+        import_data(class_code, fall)
