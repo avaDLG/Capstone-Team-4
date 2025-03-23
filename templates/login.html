@@ -30,6 +30,7 @@
             top: 0;
             left: 0;
             z-index: 10;
+            border-bottom: 3px solid red;
         }
 
         .header .logo {
@@ -146,7 +147,7 @@
     
     <div class="login-container">
         <h2>Login with {{ method.replace('_', ' ').title() }}</h2>
-        <form action="{{ url_for('login', method=method) }}" method="post">
+        <form action="{{ url_for('login_method', method=method) }}" method="post">
             <div class="input-group">
                 <label for="username">Username</label>
                 <input id="username" name="j_username" type="text" autocomplete="off" required>
@@ -159,6 +160,9 @@
             
             <div class="forgot-password">
                 <a href="https://trueyou.nebraska.edu/account/forgot-password" target="_blank">Forgot Your Password?</a>
+            </div>
+            <div class="register">
+                <a href="{{ url_for('register') }}" target="_blank">Not a member? Register here</a>
             </div>
             
             <button class="btn-cta" type="submit">Login</button>

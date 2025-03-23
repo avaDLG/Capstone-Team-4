@@ -26,3 +26,18 @@ style.css
     transform: scale(1.05);
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
 }
+
+.register-link {
+    font-family: Arial, sans-serif;
+    font-size: 18px;               
+    font-weight: bold;             
+    color: #000;                 
+    text-decoration: none;    
+    margin-top: 10px;               
+    display: block;                 
+}
+
+.register-link:hover {
+    text-decoration: underline;    
+}
+

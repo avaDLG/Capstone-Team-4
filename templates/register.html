@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - University of Nebraska & State College</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #000;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header {
+            background-color: black;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            border-bottom: 3px solid red;
+        }
+
+        .header .logo {
+          max-width: 200px;
+          height: auto;
+      }
+
+      .header .title {
+          color: white;
+          font-size: 20px;
+          font-weight: bold;
+          margin-left: 20px;
+      }
+
+      .login-container {
+          background: #fff;
+          padding: 40px;
+          border-radius: 16px;
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+          border: 3px solid #b71c1c;
+          width: 350px;
+          text-align: center;
+          animation: fadeIn 0.8s ease-in-out;
+      }
+
+      .login-container h2 {
+          font-size: 24px;
+          margin-bottom: 20px;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          color: #b71c1c;
+          border-bottom: 2px solid #b71c1c;
+          padding-bottom: 10px;
+      }
+
+      .input-group {
+          display: flex;
+          flex-direction: column;
+          text-align: left;
+          margin-bottom: 15px;
+      }
+
+      .input-group label {
+          font-weight: bold;
+          margin-bottom: 5px;
+      }
+
+      .input-group input {
+          padding: 12px;
+          font-size: 16px;
+          border: 2px solid #b71c1c;
+          border-radius: 8px;
+          width: calc(100% - 24px);
+          outline: none;
+      }
+
+      .input-group input:focus {
+          border-color: #8a0000;
+          box-shadow: 0 0 5px rgba(183, 28, 28, 0.5);
+      }
+
+      .forgot-password {
+          margin: 10px 0;
+      }
+
+      .forgot-password a {
+          color: #b71c1c;
+          text-decoration: none;
+          font-weight: bold;
+          transition: color 0.3s ease-in-out;
+      }
+
+      .forgot-password a:hover {
+          color: #8a0000;
+      }
+
+      .btn-cta {
+          background: #b71c1c;
+          color: white;
+          font-size: 18px;
+          font-weight: bold;
+          border: none;
+          border-radius: 8px;
+          padding: 14px;
+          width: 100%;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+          box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-cta:hover {
+          background: #8a0000;
+          transform: translateY(-2px);
+          box-shadow: 5px 5px 15px rgba(183, 28, 28, 0.4);
+      }
+
+      @keyframes fadeIn {
+          from {
+              opacity: 0;
+              transform: translateY(-20px);
+          }
+          to {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
+
+      .register-link {
+          font-family: Arial, sans-serif;
+          font-size: 18px;
+          font-weight: bold;
+          color: #000;
+          text-decoration: none;
+          margin-top: 10px;
+          display: block;
+      }
+
+      .register-link:hover {
+          text-decoration: underline;
+      }
+
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="{{ url_for('static', filename='university_logo.png') }}" alt="University Logo" class="logo">
+    <span class="title">University of Nebraska at Omaha</span>
+  </div>
+  
+  <div class="login-container">
+    <h2>Register Account</h2>
+    <form action="{{ url_for('register') }}" method="post">
+      {{ form.hidden_tag() }}
+      <div class="input-group">
+        {{ form.username.label }}
+        {{ form.username(class="form-control", placeholder="Enter Username") }}
+      </div>
+      <div class="input-group">
+        {{ form.email.label }}
+        {{ form.email(class="form-control", placeholder="Enter Email") }}
+      </div>
+      <div class="input-group">
+        {{ form.password.label }}
+        {{ form.password(class="form-control", placeholder="Enter Password") }}
+      </div>
+      <div class="input-group">
+        {{ form.confirm_password.label }}
+        {{ form.confirm_password(class="form-control", placeholder="Confirm Password") }}
+      </div>
+      <button class="btn-cta" type="submit">{{ form.submit.label.text }}</button>
+    </form>
+    <div class="register-link">
+      <a href="{{ url_for('login_selection') }}">Already have an account? Login here</a>
+    </div>
+  </div>
+</body>
+</html>
