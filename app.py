@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 import json
+from authentication.password_utils import check_user_credentials
 
 app = Flask(__name__)
 
@@ -13,9 +14,11 @@ def login(method):
 
         username = request.form["j_username"]
         password = request.form["j_password"]
-        print('********', username, password) 
 
-        return redirect(url_for("signed_in", username=username))
+        if check_user_credentials(username, password):
+            return redirect(url_for("signed_in", username=username))
+        else:
+            return "Invalid username or password", 401 #make new screen?
     
     return render_template("login.html", method=method)
 
@@ -89,4 +92,4 @@ def class_filter(class_code):
 
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    app.run(debug=True, port=5000)

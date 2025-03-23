@@ -1,6 +1,7 @@
 # added
 *.venv
 notes.txt
+authentication/passwords.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
