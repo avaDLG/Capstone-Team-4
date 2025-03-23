@@ -10,13 +10,40 @@ def index():
 @app.route("/login/<method>", methods=["GET", "POST"])
 def login(method):
     if request.method == "POST":
-        return redirect(url_for("signed_in", username=request.form["username"]))
+
+        username = request.form["j_username"]
+        password = request.form["j_password"]
+        print('********', username, password) 
+
+        return redirect(url_for("signed_in", username=username))
     
     return render_template("login.html", method=method)
 
 @app.route("/signed_in/<username>")
 def signed_in(username):
     return render_template("signed_in.html", username=username)
+
+@app.route("/login-selection")
+def login_selection():
+    return render_template("login_selection.html")
+
+'''
+@app.route("/login/<method>", methods=["GET", "POST"])
+def login_page(method):
+    if request.method == "POST":
+        username = request.form.get("j_username")
+
+        return redirect(url_for("signed_in", username=username))
+
+    return render_template("login.html", method=method)
+
+@app.route("/signed-in")
+def signed_in_page():
+    username = request.args.get("username", "Guest")
+    return render_template("signed_in.html", username=username)
+
+'''
+
 
 @app.route("/regression")
 def linear_regression_output():
@@ -59,23 +86,7 @@ def class_filter(class_code):
                            cs_prediction=prediction, 
                            cs_prediction_hc=prediction_hc)
 
-@app.route("/login-selection")
-def login_selection():
-    return render_template("login_selection.html")
-
-@app.route("/login/<method>", methods=["GET", "POST"])
-def login_page(method):
-    if request.method == "POST":
-        username = request.form.get("j_username")
-        return redirect(url_for("signed_in", username=username))
-
-    return render_template("login.html", method=method)
-
-@app.route("/signed-in")
-def signed_in_page():
-    username = request.args.get("username", "Guest")
-    return render_template("signed_in.html", username=username)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5001)
