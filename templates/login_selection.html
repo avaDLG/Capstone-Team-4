@@ -125,9 +125,9 @@
         <div class="login-container">
             <h2>Log In With:</h2>
             <div class="button-container">
-                <a href="{{ url_for('login', method='school_email') }}" class="login-option">UNO NETID</a>
-                <a href="{{ url_for('login', method='school_id') }}" class="login-option">NUID</a>
-                <a href="{{ url_for('login', method='other') }}" class="login-option">GUEST</a>
+                <a href="{{ url_for('login_method', method='school_email') }}" class="login-option">UNO NETID</a>
+                <a href="{{ url_for('login_method', method='school_id') }}" class="login-option">NUID</a>
+                <a href="{{ url_for('login_method', method='other') }}" class="login-option">GUEST</a>
             </div>
         </div>
     </div>
