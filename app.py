@@ -42,7 +42,7 @@ class RegistrationForm(FlaskForm):
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
-    if form.validate_on_submit():  # Ensures the form has been filled correctly
+    if form.validate_on_submit():
         username = form.username.data
         password = form.password.data
         confirm_password = form.confirm_password.data
@@ -52,10 +52,10 @@ def register():
             with open('credentials.txt', 'a') as f:
                 f.write(f'{username}:{hashed_password}\n')
             flash('Registration successful! Please login.')
-            return redirect(url_for('login_selection'))  # Redirects to the login page
+            return redirect(url_for('login_selection')) 
         else:
             flash('Passwords do not match')
-            return redirect(url_for('register'))  # Stay on the registration page if passwords do not match
+            return redirect(url_for('register'))  
 
     return render_template('register.html', form=form)
 
