@@ -162,7 +162,7 @@ def handle_register():
         with open('credentials.txt', 'a') as f:
             f.write(f'{username}:{hashed_password}\n')
         flash('Registration successful! Please login.')
-        return redirect(url_for('login_selection'))  # Redirects user to the login selection page
+        return redirect(url_for('login_selection')) 
     else:
         flash('Passwords do not match')
         return 'Passwords do not match', 400
