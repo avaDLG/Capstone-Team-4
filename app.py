@@ -42,19 +42,6 @@ def register():
 
     return render_template('register.html', form=form)
 
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if user and user.check_password(form.password.data):
-            flash('Logged in successfully!')
-            return redirect(url_for('index'))
-        else:
-            flash('Invalid username or password')
-    return render_template('login.html', form=form)
-
 @app.route("/")
 def index():
     return render_template("login_selection.html")
@@ -71,7 +58,6 @@ def login_method(method):
             return redirect(url_for("login_method", method=method))
     return render_template("login.html", method=method)
 
-
 @app.route("/signed_in/<username>")
 def signed_in(username):
     return render_template("signed_in.html", username=username)
@@ -79,7 +65,6 @@ def signed_in(username):
 @app.route("/login-selection")
 def login_selection():
     return render_template("login_selection.html")
-
 
 @app.route("/regression")
 def linear_regression_output():
@@ -99,7 +84,6 @@ def class_filter_enrollment(class_code):
     enrollment = cs_enrollment[f"{letter} {number}"]
 
     return jsonify(enrollment)
-
 
 @app.route("/filter/<class_code>", methods=["GET"])
 def class_filter(class_code):
