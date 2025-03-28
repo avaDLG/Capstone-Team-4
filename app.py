@@ -8,24 +8,7 @@ import json
 import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SECRET_KEY'] = os.urandom(24)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
-db = SQLAlchemy(app)
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password_hash = db.Column(db.String(128))
-
-    def set_password(self, password):
-        self.password_hash = generate_password_hash(password)
-
-    def check_password(self, password):
-        return check_password_hash(self.password_hash, password)
-
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -79,9 +62,15 @@ def index():
 @app.route("/login/<method>", methods=["GET", "POST"])
 def login_method(method):
     if request.method == "POST":
-        return redirect(url_for("signed_in", username=request.form["j_username"]))
-    
+        username = request.form.get("j_username")
+        password = request.form.get("j_password")
+        if check_credentials(username, password):
+            return redirect(url_for("signed_in", username=username))
+        else:
+            flash("Invalid credentials. Please register if you don't have an account.")
+            return redirect(url_for("login_method", method=method))
     return render_template("login.html", method=method)
+
 
 @app.route("/signed_in/<username>")
 def signed_in(username):
@@ -90,23 +79,6 @@ def signed_in(username):
 @app.route("/login-selection")
 def login_selection():
     return render_template("login_selection.html")
-
-'''
-@app.route("/login/<method>", methods=["GET", "POST"])
-def login_page(method):
-    if request.method == "POST":
-        username = request.form.get("j_username")
-
-        return redirect(url_for("signed_in", username=username))
-
-    return render_template("login.html", method=method)
-
-@app.route("/signed-in")
-def signed_in_page():
-    username = request.args.get("username", "Guest")
-    return render_template("signed_in.html", username=username)
-
-'''
 
 
 @app.route("/regression")
@@ -167,8 +139,16 @@ def handle_register():
         flash('Passwords do not match')
         return 'Passwords do not match', 400
 
+def check_credentials(username, password):
+    try:
+        with open('credentials.txt', 'r') as file:
+            for line in file:
+                stored_username, stored_password_hash = line.strip().split(':', 1)
+                if stored_username == username and check_password_hash(stored_password_hash, password):
+                    return True
+        return False
+    except FileNotFoundError:
+        return False
 
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
     app.run(debug=True, port=5000)
