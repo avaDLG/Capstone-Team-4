@@ -1,3 +1,9 @@
+"""
+@package app.py
+@brief This file is the Flask structure of the web application.
+@details This connects to the back end data and the front end HTML pages.
+"""
+
 from flask import Flask, render_template, request, redirect, url_for, jsonify, flash 
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
@@ -15,6 +21,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
 class User(db.Model):
+
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
