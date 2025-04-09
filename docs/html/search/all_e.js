@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['username_0',['username',['../classapp_1_1_login_form.html#a2ffc1a8bb140a989e0217901644bb16c',1,'app.LoginForm.username'],['../classapp_1_1_registration_form.html#ae7d38de6ea2eca4248ffad1a708e551b',1,'app.RegistrationForm.username']]]
+  ['signed_5fin_0',['signed_in',['../namespaceapp.html#a0c268ee406e6a44944e9fe5a19034512',1,'app']]],
+  ['submit_1',['submit',['../classapp_1_1_login_form.html#ae305ea399aded8f81122dc39b26b9a00',1,'app.LoginForm.submit'],['../classapp_1_1_registration_form.html#adcd20366ee4f26634fae2c7b96643ff0',1,'app.RegistrationForm.submit']]]
 ];

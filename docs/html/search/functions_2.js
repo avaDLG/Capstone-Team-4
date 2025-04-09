@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['index_0',['index',['../namespaceapp.html#a4727fbeb35bed8ec5000ba2eb4cec4a7',1,'app']]]
+  ['handle_5fregister_0',['handle_register',['../namespaceapp.html#a4c3500e6e8ba6b131c6391756eba8f1f',1,'app']]]
 ];
