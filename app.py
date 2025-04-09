@@ -1,3 +1,9 @@
+"""
+@package app.py
+@brief This file is the Flask structure of the web application.
+@details This connects to the back end data and the front end HTML pages.
+"""
+
 from flask import Flask, render_template, request, redirect, url_for, jsonify, flash 
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
