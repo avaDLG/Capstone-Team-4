@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}University of Nebraska at Omaha{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #000;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header {
+            background-color: black;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+            border-bottom: 3px solid #b71c1c;
+        }
+
+        .header .logo {
+            max-width: 200px;
+            height: auto;
+        }
+
+        .header .title {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        .container {
+            margin-top: 30px;
+            width: 100%;
+            max-width: 800px;
+        }
+    </style>
+    
+    {% block extra_styles %}{% endblock %}
+</head>
+<body>
+
+    <div class="header">
+        <img src="{{ url_for('static', filename='university_logo.png') }}" alt="University Logo" class="logo">
+        <span class="title">University of Nebraska at Omaha</span>
+    </div>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Course Projection Tool{% endblock %}
+
+{% block content %}
+    
+    <div class="content">
+        
+        <h2>{{class_code}} Overview</h2>
+        <p>Class Name: {{class_name}}</p>
+        <h3>Class Enrollments Over the Years</h3>
+        <p>Fall: {{fall}}</p>
+        <p>Spring {{spring}}</p>
+        <h3>Premilinary Predictions:</h3>
+        <p>{{predicted}}</p>
+        <p style="color: red;">{{discontinued}} </p>
+        <img src="{{ url_for('static', filename=filename) }}" alt="Generated Plot">
+
+    </div>
+
+{% endblock %}

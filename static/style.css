@@ -1,17 +1,79 @@
-style.css
+/* General Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #000;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    
+}
 
-.login-selection-container {
-    text-align: center;
-    margin-top: 100px;
+/* Header */
+.header {
+    background-color: black;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    border-bottom: 3px solid #b71c1c;
+}
+
+.header .logo {
+    max-width: 200px;
+    height: auto;
+}
+
+.header .title {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+/* Content Styling */
+.content {
+    padding: 40px;
+    margin-top: 200px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Login Container */
+.login-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    border: 3px solid #b71c1c;
+    width: 350px;
+    animation: fadeIn 0.8s ease-in-out;
+
+}
+
+/* Login Buttons */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .login-option {
     display: block;
     width: 250px;
-    padding: 12px;
-    margin: 12px auto;
+    padding: 14px;
+    margin: 10px 0;
     text-align: center;
-    background: linear-gradient(135deg, #d32f2f, #b71c1c);
+    background: #b71c1c;
     color: white;
     text-decoration: none;
     font-size: 18px;
@@ -19,25 +81,34 @@ style.css
     border-radius: 8px;
     transition: all 0.3s ease-in-out;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    border: none;
 }
 
 .login-option:hover {
-    background: linear-gradient(135deg, #b71c1c, #7f0000);
-    transform: scale(1.05);
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    background: #8a0000;
+    transform: translateY(-2px);
+    box-shadow: 5px 5px 15px rgba(183, 28, 28, 0.4);
 }
 
-.register-link {
-    font-family: Arial, sans-serif;
-    font-size: 18px;               
-    font-weight: bold;             
-    color: #000;                 
-    text-decoration: none;    
-    margin-top: 10px;               
-    display: block;                 
+.input-group {
+    flex-direction: column;
+    margin-bottom: 15px; 
 }
 
-.register-link:hover {
-    text-decoration: underline;    
+.register {
+    margin-top: 20px; 
+    text-align: center;
+    margin-bottom: 15px; 
 }
 
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
