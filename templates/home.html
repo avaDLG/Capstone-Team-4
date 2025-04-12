@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Course Projection Tool{% endblock %}
+
+{% block content %}
+    <p class="welcome" style="text-align: right;">Hi {{ username }}!</p>
+    
+    <h2>Welcome to the PKI Projection Tool</h2>
+    
+    <p>This tool helps you visualize the course enrollment trends and project the number of students for the upcoming semester.</p>
+
+    <h3>What Course Do You Want To Look At?</h3>
+    <form action="{{ url_for('plot_data') }}" method="POST" class="class-form">
+        <div class="input-group">
+            <label for="class_code">Class Code</label>
+            <input type="text" id="class_code" name="class_code" required>
+        </div>
+
+        <div class="input-group">
+            <label for="semester">Semester</label>
+            <select id="semester" name="semester" required>
+                <option value="" disabled selected>Select a semester</option>
+                <option value="Fall">Fall</option>
+                <option value="Spring">Spring</option>
+            </select>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}

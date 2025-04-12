@@ -3,12 +3,19 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo
 from flask_sqlalchemy import SQLAlchemy
+from config.config_db import Config
 from werkzeug.security import generate_password_hash, check_password_hash
-import json
 import os
+from scripts.graph_data import graph_data  
+from scripts.get_class_info import get_class_info  
+from config.config_db import get_db 
+from scripts.run_regression import linear_regression_run
 
 app = Flask(__name__)
+app.config.from_object(Config)
 app.config['SECRET_KEY'] = os.urandom(24)
+
+""" Related to the login functionality """
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -32,7 +39,7 @@ def register():
 
         if password == confirm_password:
             hashed_password = generate_password_hash(password)
-            with open('credentials.txt', 'a') as f:
+            with open('authentication/credentials.txt', 'a') as f:
                 f.write(f'{username}:{hashed_password}\n')
             flash('Registration successful! Please login.')
             return redirect(url_for('login_selection')) 
@@ -52,60 +59,21 @@ def login_method(method):
         username = request.form.get("j_username")
         password = request.form.get("j_password")
         if check_credentials(username, password):
-            return redirect(url_for("signed_in", username=username))
+            return redirect(url_for("home", username=username))
         else:
             flash("Invalid credentials. Please register if you don't have an account.")
             return redirect(url_for("login_method", method=method))
     return render_template("login.html", method=method)
 
-@app.route("/signed_in/<username>")
-def signed_in(username):
-    return render_template("signed_in.html", username=username)
+@app.route("/home/<username>")
+# This route shows the successful login and home page 
+def home(username):
+    return render_template("home.html", username=username)
 
 @app.route("/login-selection")
+# This route renders the page with 3 login options 
 def login_selection():
     return render_template("login_selection.html")
-
-@app.route("/regression")
-def linear_regression_output():
-    with open('data/cs_predictions.json', 'r') as f:
-        cs_predictions = json.load(f)
-    
-    return jsonify(cs_predictions)
-
-@app.route("/filter-enrollment/<class_code>", methods=["GET"])
-def class_filter_enrollment(class_code):
-    letter = class_code[:4]
-    number = class_code[4:]
-
-    with open('data/cs_enrollment.json', 'r') as f:
-        cs_enrollment = json.load(f)
-    
-    enrollment = cs_enrollment[f"{letter} {number}"]
-
-    return jsonify(enrollment)
-
-@app.route("/filter/<class_code>", methods=["GET"])
-def class_filter(class_code):
-    letter = class_code[:4]
-    number = class_code[4:]
-
-    with open('data/cs_enrollment.json', 'r') as f:
-        cs_enrollment = json.load(f)
-    with open('data/cs_predictions.json', 'r') as f:
-        cs_prediction = json.load(f)
-    with open('data/cs_predictions_with_hc.json', 'r') as f:
-        cs_prediction_hc = json.load(f)
-    
-    enrollment = cs_enrollment[f"{letter} {number}"]
-    prediction = cs_prediction[f"{letter} {number}"]
-    prediction_hc = cs_prediction_hc[f"{letter} {number}"]
-
-    return render_template("data_result.html", 
-                           cs_enrollment=enrollment, 
-                           cs_prediction=prediction, 
-                           cs_prediction_hc=prediction_hc)
-
 
 @app.route('/handle_register', methods=['POST'])
 def handle_register():
@@ -115,7 +83,7 @@ def handle_register():
 
     if password == confirm_password:
         hashed_password = generate_password_hash(password)
-        with open('credentials.txt', 'a') as f:
+        with open('authentication/credentials.txt', 'a') as f:
             f.write(f'{username}:{hashed_password}\n')
         flash('Registration successful! Please login.')
         return redirect(url_for('login_selection')) 
@@ -125,7 +93,7 @@ def handle_register():
 
 def check_credentials(username, password):
     try:
-        with open('credentials.txt', 'r') as file:
+        with open('authentication/credentials.txt', 'r') as file:
             for line in file:
                 stored_username, stored_password_hash = line.strip().split(':', 1)
                 if stored_username == username and check_password_hash(stored_password_hash, password):
@@ -133,6 +101,36 @@ def check_credentials(username, password):
         return False
     except FileNotFoundError:
         return False
+    
+""" Related to the login functionality """
+
+@app.route("/plot",  methods=['POST'])
+def plot_data():
+    # Get a database session from the get_db() function
+    db = next(get_db())
+
+    class_code = request.form.get('class_code')
+    sem = request.form.get('semester')
+    
+    # Call import_data to generate the plot for the given class_code and semester
+    filename = graph_data(class_code, sem)
+    print(filename)
+
+    # Call get_class_info for some overview info 
+    class_name, fall, spring, discontinued, predicted = get_class_info(class_code)
+
+    return render_template('result_page.html', filename=filename, class_code=class_code, class_name=class_name[0], fall=fall, spring=spring, discontinued=discontinued, predicted=predicted)
+
+@app.route('/regression_db', methods=['GET'])
+def trigger_regression():
+    """
+    Endpoint that triggers the regression process and returns the results.
+    """
+    db = next(get_db())
+    
+    predictions = linear_regression_run(db, semester="Fall")  
+    
+    return jsonify(predictions)  # Return the predictions as a JSON response
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
