@@ -1,7 +1,7 @@
 # Capstone-Team-4
 University of Nebraska at Omaha code repository for Capstone Team 4 Spring 2025
 
-# Code Milesone 3
+# Code Milestone 3
 1. Introduction:
 
  This is an application to predict Computer Science class sizes for the University of Nebraska at Omaha. Every semester the CS administration must manually look at data from previous semesters to set the number of student spots avaliable for the upcoming semester. 
