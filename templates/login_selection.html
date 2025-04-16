@@ -3,14 +3,77 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
+<style>
+  .page-center-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+  }
 
-    <div class="login-container">
-        <h2>Log In With:</h2>
-        <div class="button-container">
-            <a href="{{ url_for('login_method', method='school_email') }}" class="login-option">UNO NETID</a>
-            <a href="{{ url_for('login_method', method='school_id') }}" class="login-option">NUID</a>
-            <a href="{{ url_for('login_method', method='other') }}" class="login-option">GUEST</a>
-        </div>
+  .login-container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    border: 3px solid #b71c1c;
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+    width: 350px;
+  }
+
+  .login-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    color: #b71c1c;
+    border-bottom: 2px solid #b71c1c;
+    padding-bottom: 10px;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  .login-option {
+    background: #b71c1c;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .login-option:hover {
+    background: #8a0000;
+    transform: translateY(-2px);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<div class="page-center-wrapper">
+  <div class="login-container">
+    <h2>Log In With:</h2>
+    <div class="button-container">
+      <a href="{{ url_for('login_method', method='school_email') }}" class="login-option">UNO NETID</a>
+      <a href="{{ url_for('login_method', method='school_id') }}" class="login-option">NUID</a>
+      <a href="{{ url_for('login_method', method='other') }}" class="login-option">GUEST</a>
     </div>
-
+  </div>
+</div>
 {% endblock %}
