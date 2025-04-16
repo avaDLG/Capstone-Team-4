@@ -1,0 +1,5 @@
+DB_USER = "fall25team4db"
+DB_PASSWORD = "=0Ts4HucO?;5MhVj"
+DB_NAME = "project_data"
+DB_HOST = "127.0.0.1" 
+DB_PORT = "3306"
