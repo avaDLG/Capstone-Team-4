@@ -1,8 +1,12 @@
-import matplotlib.pyplot as plt
 import numpy as np
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy import text
 from config.config_db import engine  # Import database connection
+
+# to make module on BOTH windows and Mac
+import matplotlib
+matplotlib.use('Agg') # matplotlib can only write to file
+from matplotlib import pyplot as plt
 
 def graph_data(class_code, sem):
     """
