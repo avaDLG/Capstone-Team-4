@@ -26,7 +26,7 @@ def graph_data(class_code, sem):
     try:
         enrollment_query = text("""
             SELECT Year, Enrollment FROM project_data.enrollment_data
-            WHERE semester = :semester AND class_code = :class_code
+            WHERE semester = :semester AND class_code = :class_code AND Enrollment != 0
             ORDER BY Year
         """)
         result = session.execute(enrollment_query, {"semester": sem, "class_code": class_code})
@@ -87,6 +87,7 @@ def graph_data(class_code, sem):
 
         # Labels and title
         plt.xlabel("Year")
+        plt.xticks(erll_available_years)
         plt.ylabel("Count")
         plt.title(f"Headcount vs Enrollment Trend for {class_code} ({sem})")
         plt.legend()

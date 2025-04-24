@@ -123,18 +123,10 @@
                 <div class="input-group">
                     <label for="class_code">Class Code</label>
                     <input type="text" id="class_code" name="class_code" required placeholder="e.g., CSCI3320">
+                    {% if error %}
+                        <p style="color: red; font-size: 0.9em; font-style: italic;" id="responseMessage">{{ error }}</p>
+                    {% endif %}
                 </div>
-    <h3>What Course Do You Want To Look At?</h3>
-
-    <form action="{{ url_for('plot_data') }}" method="POST" class="class-form">
-        <div class="input-group">
-            <label for="class_code">Class Code</label>
-            <input type="text" id="class_code" name="class_code" required>
-        </div>
-
-        {% if error %}
-            <p style="color: red; font-size: 0.9em; font-style: italic;" id="responseMessage">{{ error }}</p>
-        {% endif %}
 
                 <div class="input-group">
                     <label for="semester">Semester</label>
