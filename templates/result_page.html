@@ -14,7 +14,7 @@
         <h3>Premilinary Predictions:</h3>
         <p>{{predicted}}</p>
         <p style="color: red;">{{discontinued}} </p>
-        <img src="{{ url_for('static', filename=filename) }}" alt="Generated Plot">
+        <img src="{{ url_for('static', filename='plots/' + filename) }}" alt="Generated Plot">
 
     </div>
 
