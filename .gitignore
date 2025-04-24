@@ -3,6 +3,7 @@
 notes.txt
 authentication/key.json
 authentication/credentials.txt
+static/plots/*.png
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
