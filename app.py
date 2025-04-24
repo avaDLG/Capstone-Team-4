@@ -109,12 +109,10 @@ def check_credentials(identifier, password):
         with open(CRED_FILE, 'r') as f:
             for line in f:
                 first_name, email, nuid, pw_hash = line.strip().split(':', 3)
-                if (identifier == email or identifier == nuid) \
-                   and check_password_hash(pw_hash, password):
+                if (identifier == email or identifier == nuid) and check_password_hash(pw_hash, password):
                     return first_name
     except FileNotFoundError:
-        pass
-    return None
+        return False
     
 """ Related to the login functionality """
 

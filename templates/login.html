@@ -177,19 +177,21 @@
     <div class="login-container">
       <h2>Login with {{ method.replace('_', ' ').title() }}</h2>
       <form action="{{ url_for('login_method', method=method) }}" method="post">
+        {{ form.hidden_tag() }}
+      
         <div class="input-group">
-          <label for="identifier">Email or NUID</label>
-          <input name="identifier" id="username" type="text" autocomplete="off" required>
+          {{ form.identifier.label }}
+          {{ form.identifier(class="form-control", placeholder="Email or NUID") }}
         </div>
+      
         <div class="input-group">
-          <label for="password">Password</label>
-          <input name="j_password" id="password" type="password" autocomplete="off" required>
+          {{ form.password.label }}
+          {{ form.password(class="form-control", placeholder="Password") }}
         </div>
-        <div class="forgot-password">
-          <a href="#">Forgot Password?</a>
-        </div>
-        <button class="btn-cta" type="submit">Login</button>
+      
+        <button class="btn-cta" type="submit">{{ form.submit.label.text }}</button>
       </form>
+      
       <div class="register-link">
         <a href="{{ url_for('register') }}" target="_blank">Not a member? Register here</a>
       </div>
