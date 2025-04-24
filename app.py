@@ -104,7 +104,7 @@ def handle_register():
         flash('Passwords do not match')
         return 'Passwords do not match', 400
 
-def check_credentials(username, password):
+def check_credentials(identifier, password):
     try:
         with open(CRED_FILE, 'r') as f:
             for line in f:
