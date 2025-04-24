@@ -9,7 +9,7 @@ import os
 import re
 from scripts.graph_data import graph_data  
 from scripts.get_class_info import get_class_info
-from scripts.ridge_regression import ridge_regression   
+from scripts.random_forest import random_forest   
 from config.config_db import get_db 
 from scripts.run_regression import linear_regression_run
 
@@ -140,13 +140,13 @@ def trigger_regression():
     predictions = linear_regression_run(db, semester="Fall")  
     return jsonify(predictions)  # Return the predictions as a JSON response
 
-@app.route('/ridge', methods=['GET'])
-def ridge_reg():
+@app.route('/random_forest', methods=['GET'])
+def rr_regression():
     """
     Endpoint that triggers the regression process and returns the results.
     """
     db = next(get_db())
-    predictions = ridge_regression(db)  
+    predictions = random_forest(db)  
     return jsonify(predictions)  # Return the predictions as a JSON response
 
 if __name__ == '__main__':
