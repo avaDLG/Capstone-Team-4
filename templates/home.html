@@ -3,12 +3,127 @@
 {% block title %}Course Projection Tool{% endblock %}
 
 {% block content %}
-    <p class="welcome" style="text-align: right;">Hi {{ username }}!</p>
-    
-    <h2>Welcome to the PKI Projection Tool</h2>
-    
-    <p>This tool helps you visualize the course enrollment trends and project the number of students for the upcoming semester.</p>
+<style>
+    .page-wrapper {
+        margin-top: 100px;
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        background-color: #f4f4f4;
+        min-height: calc(100vh - 100px);
+        animation: fadeIn 0.5s ease-in;
+    }
 
+    .welcome {
+        text-align: right;
+        margin: 10px 40px 0 0;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .form-container {
+        background: #fff;
+        border: 3px solid #b71c1c;
+        border-radius: 16px;
+        padding: 40px 60px;
+        max-width: 1000px;
+        width: 100%;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .form-container h2 {
+        color: #b71c1c;
+        margin-bottom: 15px;
+        font-size: 28px;
+        border-bottom: 2px solid #b71c1c;
+        padding-bottom: 10px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .form-container p {
+        margin-bottom: 30px;
+        font-size: 16px;
+        color: #444;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 30px;
+    }
+
+    .input-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .input-group label {
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: #222;
+    }
+
+    .input-group input,
+    .input-group select {
+        padding: 12px;
+        font-size: 16px;
+        border: 2px solid #b71c1c;
+        border-radius: 8px;
+        outline: none;
+        transition: box-shadow 0.2s ease;
+    }
+
+    .input-group input:focus,
+    .input-group select:focus {
+        box-shadow: 0 0 5px rgba(183, 28, 28, 0.5);
+        border-color: #8a0000;
+    }
+
+    button[type="submit"] {
+        padding: 14px 30px;
+        background: #b71c1c;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    button[type="submit"]:hover {
+        background: #8a0000;
+        transform: translateY(-2px);
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<p class="welcome">Hi {{ username }}!</p>
+
+<div class="page-wrapper">
+    <div class="form-container">
+        <h2>PKI Projection Tool</h2>
+        <p>This tool helps you visualize course enrollment trends and project student numbers for the upcoming semester.</p>
+
+        <form action="{{ url_for('plot_data') }}" method="POST">
+            <div class="form-grid">
+                <div class="input-group">
+                    <label for="class_code">Class Code</label>
+                    <input type="text" id="class_code" name="class_code" required placeholder="e.g., CSCI3320">
+                </div>
     <h3>What Course Do You Want To Look At?</h3>
 
     <form action="{{ url_for('plot_data') }}" method="POST" class="class-form">
@@ -21,15 +136,18 @@
             <p style="color: red; font-size: 0.9em; font-style: italic;" id="responseMessage">{{ error }}</p>
         {% endif %}
 
-        <div class="input-group">
-            <label for="semester">Semester</label>
-            <select id="semester" name="semester" required>
-                <option value="" disabled selected>Select a semester</option>
-                <option value="Fall">Fall</option>
-                <option value="Spring">Spring</option>
-            </select>
-        </div>
+                <div class="input-group">
+                    <label for="semester">Semester</label>
+                    <select id="semester" name="semester" required>
+                        <option value="" disabled selected>Select a semester</option>
+                        <option value="Fall">Fall</option>
+                        <option value="Spring">Spring</option>
+                    </select>
+                </div>
+            </div>
 
-        <button type="submit">Submit</button>
-    </form>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
