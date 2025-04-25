@@ -123,6 +123,9 @@
                 <div class="input-group">
                     <label for="class_code">Class Code</label>
                     <input type="text" id="class_code" name="class_code" required placeholder="e.g., CSCI3320">
+                    {% if error %}
+                        <p style="color: red; font-size: 0.9em; font-style: italic;" id="responseMessage">{{ error }}</p>
+                    {% endif %}
                 </div>
 
                 <div class="input-group">

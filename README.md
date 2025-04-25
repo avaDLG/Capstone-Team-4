@@ -1,7 +1,7 @@
 # Capstone-Team-4
 University of Nebraska at Omaha code repository for Capstone Team 4 Spring 2025
 
-# Code Milestone 3
+# Code Milestone 4
 1. Introduction:
 
  This is an application to predict Computer Science class sizes for the University of Nebraska at Omaha. Every semester the CS administration must manually look at data from previous semesters to set the number of student spots avaliable for the upcoming semester. 
@@ -14,19 +14,17 @@ University of Nebraska at Omaha code repository for Capstone Team 4 Spring 2025
  
  The application is a currently an application of back-end linear regression modeling, a Flask API to connect to the the front end HTML and CSS screens. 
 
- The sign-in functionality is working with password hashing and user registration. After registration, users should be able to use their just registered credentials to log in. You can view the details about a particular class with the correct code. 
+ The sign-in functionality now supports all three types of logins and we add more frontend elements to make the class query form look more attractive to users. The logic that accounts for the users' input error is added for better user experience. Eg. csci3320 or CSCI3320 or csci 3320. If an invalid input is added, an error message will be displayed to let the user know the class code is incorrect. 
 
- While the model remains the same, the backend design evolves with the MySQL database hosted on Google Cloud. Related information about a class is now centralized and displayed on the result page. 
+ On the model side, we add another route that triggers the Random Forest model. This route is still in progress and there is some area for improvement here. 
 
- Documentation from Doxygen has been configured to work with the code. 
+ The testing phase has started and will continue to be added.  
    
 3. Branches
 
- The Main branch has all of the work that we have pushed that does run sucessfully. The other branches we have are to keep developing the front and backend without interfereing with the basic model and interface we have now. T
+ The 'main' branch has all of the work that we have pushed that does run sucessfully. The other branches we have are to keep developing the front and backend without interfereing with the basic model and interface we have now. T
 
  ash_authentication - is Ashley's branch working with use authentication with username and passwords from the user side. 
 
- ava-docs - is Ava's branch to learn how to use Doxy and create the HTML documentation page correctly.
-
- thi-database-integration - has been pulled to the main branch for database integration and refactoring. 
+ thi-linearmodels - an additional model is being developed. 
 

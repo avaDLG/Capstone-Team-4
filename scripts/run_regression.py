@@ -42,10 +42,10 @@ def linear_regression_run(session, semester):
             X.append(headcount_dict[year])
             y.append(enrollment)
 
-        # Ensure there's enough data for the model 
-        if len(X) < 4:
-            print(f"Not enough data to build the model for {class_code}.")
-            continue
+        # # Ensure there's enough data for the model 
+        # if len(X) < 4:
+        #     print(f"Not enough data to build the model for {class_code}.")
+        #     continue
 
         # Train the model, excluding 2024 
         model = LinearRegression()
