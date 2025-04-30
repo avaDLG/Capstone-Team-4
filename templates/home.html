@@ -119,6 +119,7 @@
         <p>This tool helps you visualize course enrollment trends and project student numbers for the upcoming semester.</p>
 
         <form action="{{ url_for('plot_data') }}" method="POST">
+            <input type="hidden" name="username" value="{{ username }}">
             <div class="form-grid">
                 <div class="input-group">
                     <label for="class_code">Class Code</label>
@@ -127,7 +128,7 @@
                         <p style="color: red; font-size: 0.9em; font-style: italic;" id="responseMessage">{{ error }}</p>
                     {% endif %}
                 </div>
-
+        
                 <div class="input-group">
                     <label for="semester">Semester</label>
                     <select id="semester" name="semester" required>
@@ -137,9 +138,9 @@
                     </select>
                 </div>
             </div>
-
+        
             <button type="submit">Submit</button>
-        </form>
+        </form>        
     </div>
 </div>
 {% endblock %}

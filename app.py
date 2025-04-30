@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify, flash 
+from flask import Flask, render_template, request, redirect, url_for, jsonify, flash, session
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo
@@ -139,7 +139,8 @@ def plot_data():
     if filename: 
         # Call get_class_info for some overview info 
         class_name, fall, spring, discontinued, predicted = get_class_info(class_code)
-        return render_template('result_page.html', filename=filename, class_code=class_code, class_name=class_name[0], fall=fall, spring=spring, discontinued=discontinued, predicted=predicted)
+        username = request.form.get('username', 'Guest')
+        return render_template('result_page.html', filename=filename, class_code=class_code, class_name=class_name[0], fall=fall, spring=spring, discontinued=discontinued, predicted=predicted, username=username)
     else: 
         return render_template("home.html", error=message)
     
