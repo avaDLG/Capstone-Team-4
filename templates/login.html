@@ -147,7 +147,7 @@
         }
     }
 
-    .register-link {
+    .register-link, .return-link {
         font-family: Arial, sans-serif;
         font-size: 18px;
         font-weight: bold;
@@ -157,12 +157,12 @@
         display: block;
     }
 
-    .register-link a {
+    .register-link a, .return-link a {
         color: #b71c1c;
         text-decoration: none;
     }
 
-    .register-link a:hover {
+    .register-link a:hover, .return-link a:hover {
         text-decoration: underline;
     }
   </style>
@@ -183,7 +183,7 @@
             <label for="identifier">
                 {% if method == 'school_email'%}
                     Username
-                {% else %}
+                {% else %} 
                     NUID
                 {% endif %}
             </label>
@@ -207,6 +207,9 @@
       
       <div class="register-link">
         <a href="{{ url_for('register') }}" target="_blank">Not a member? Register here</a>
+      </div>
+      <div class="return-link">
+        <a href="{{ url_for('login_selection') }}" target="_blank">Back to Login Selection</a>
       </div>
     </div>
   </main>
