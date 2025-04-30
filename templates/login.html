@@ -175,27 +175,31 @@
 
   <main class="page-content">
     <div class="login-container">
-      <h2>Login with {{ method.replace('_', ' ').title() }}</h2>
+      <h2>
+        Login with
+        {% if method == 'school_email' %}
+            Email
+        {% else %}
+            NUID
+        {% endif %}
+      </h2>
       <form action="{{ url_for('login_method', method=method) }}" method="post">
         {{ form.hidden_tag() }}
-      
         <div class="input-group">
             <label for="identifier">
-                {% if method == 'school_email'%}
-                    Username
-                {% else %}
-                    NUID
-                {% endif %}
+              {% if method == 'school_email' %}
+                Email
+              {% else %}
+                NUID
+              {% endif %}
             </label>
-            <input
-                name="identifier"
-                id="identifier"
-                type="identifier"
-                autocomplete="off"
-                placeholder="{% if method == 'school_email' %}Enter Username{% else %}Enter NUID{% endif %}"
-                required
-            >
-        </div>
+            {{ form.identifier(
+                 id="identifier",
+                 class="form-control",
+                 placeholder=(method=='school_email' and 'Enter Email' or 'Enter NUID')
+               ) }}
+          </div>
+          
       
         <div class="input-group">
           {{ form.password.label }}
