@@ -5,9 +5,12 @@ from sqlalchemy import text
 from config.config_db import engine  # Import database connection
 
 def get_class_info(class_code):
+    
     """
     This function fetches enrollment and headcount data from the database
     for the given class code and semester.
+    param: class_code in form DEPT xxxx
+    return: class_name: the name of the class, fall_offerings: list of enrollment numbers in fall, spring_offerings:  list of enrollment numbers in spring, discontinued: whether the class is discontinued 
     """
 
     # Create a session
@@ -73,21 +76,5 @@ def get_class_info(class_code):
         print("Error fetching data:", e)
         session.rollback()
         return
-    
-    prediction = []
-    try:
-        prediction_query = text("""
-            SELECT semester, predicted_enrollment FROM project_data.predictions 
-            WHERE Class_Code = :class_code AND Semester = :semester
-        """)
-        result = session.execute(prediction_query, {"class_code": class_code, "semester": "Fall"})
-        if result:
-            for row in result: 
-                prediction.append(f"{row.semester} - {row.predicted_enrollment}")
-    except Exception as e:
-        print("Error fetching data:", e)
-        session.rollback()
-        return
 
-    print(prediction)
-    return class_name, fall_offerings, spring_offerings, discontinued, prediction
+    return class_name, fall_offerings, spring_offerings, discontinued

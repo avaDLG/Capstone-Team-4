@@ -45,9 +45,16 @@
     <!-- Predictions -->
     <div class="card mb-4" style="flex: 1;">
         <div class="card-body">
-            <h3 class="card-title">Preliminary Predictions:</h3>
-            <p class="card-text">{{ predicted }}</p>
-            <p class="card-text text-danger">{{ discontinued }}</p>
+            <h3>Preliminary Predictions:</h3>
+            <p>Linear Regression</p>
+            <p>{{ lr_prediction[0] }}</p>
+            <p>{{ lr_prediction[1] }}</p>
+            <p>{{ lr_prediction[2] }}</p>
+            <p>Random Forest Regression</p>
+            <p>{{ rr_prediction[0] }}</p>
+            <p>{{ rr_prediction[1] }}</p>
+            <p>{{ rr_prediction[2] }}</p>
+            <p style="color: red;">{{ discontinued }}</p>
         </div>
     </div>
 
