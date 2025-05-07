@@ -5,10 +5,13 @@ from wtforms.validators import DataRequired, Email, EqualTo
 from flask_sqlalchemy import SQLAlchemy
 from config.config_db import Config
 from werkzeug.security import generate_password_hash, check_password_hash
+
 import os
 import re
+
 from scripts.graph_data import graph_data  
 from scripts.get_class_info import get_class_info
+from scripts.query_predictions import query_predictions
 from scripts.random_forest import random_forest   
 from config.config_db import get_db 
 from scripts.run_regression import linear_regression_run
@@ -119,15 +122,23 @@ def check_credentials(identifier, password):
 """ End of Related to the login functionality """
 
 def normalize_class_code(raw_code):
+    """
+    This method handles different variations of user input and change it to the valid form 
+    param: raw_code: user input 
+    returns: the class code in form DEPT xxxx
+    """
     match = re.match(r"([A-Za-z]+)\s*([0-9]+)", raw_code)
     if match:
         return f"{match.group(1).upper()} {match.group(2)}"
     return raw_code.upper()
 
 @app.route("/plot",  methods=['POST'])
-# This route generate the plot and all associated data
 def plot_data():
-    # Get a database session from the get_db() function
+    """
+    This method display all user input and display what we know about the class 
+    param: none 
+    return: none - info is rendered to the template 
+    """
     db = next(get_db())
    
     sem = request.form.get('semester')
@@ -138,28 +149,32 @@ def plot_data():
     filename, message = graph_data(class_code, sem)
     if filename: 
         # Call get_class_info for some overview info 
-        class_name, fall, spring, discontinued, predicted = get_class_info(class_code)
+        class_name, fall, spring, discontinued = get_class_info(class_code)
+
+        # Query the predictions 
+        predicted_lr, predicted_rr = query_predictions(class_code, sem)
+
         username = request.form.get('username', 'Guest')
-        return render_template('result_page.html', filename=filename, class_code=class_code, class_name=class_name[0], fall=fall, spring=spring, discontinued=discontinued, predicted=predicted, username=username)
+        return render_template('result_page.html', filename=filename, class_code=class_code, class_name=class_name[0], fall=fall, spring=spring, discontinued=discontinued, lr_prediction=predicted_lr, rr_prediction=predicted_rr, username=username)
     else: 
         return render_template("home.html", error=message)
     
-@app.route('/regression_db', methods=['GET'])
-def trigger_regression():
+@app.route('/linear_regression/<semester>', methods=['GET', 'POST'])
+def trigger_regression(semester):
     """
-    Endpoint that triggers the regression process and returns the results.
+    Endpoint that triggers the linear regression model and returns the results.
     """
     db = next(get_db())
-    predictions = linear_regression_run(db, semester="Fall")  
+    predictions = linear_regression_run(db, semester)  
     return jsonify(predictions)  # Return the predictions as a JSON response
 
-@app.route('/random_forest', methods=['GET'])
-def rr_regression():
+@app.route('/random_forest/<semester>', methods=['GET', 'POST'])
+def rr_regression(semester):
     """
-    Endpoint that triggers the regression process and returns the results.
+    Endpoint that triggers the random forest model and returns the results.
     """
     db = next(get_db())
-    predictions = random_forest(db)  
+    predictions = random_forest(db, semester)  
     return jsonify(predictions)  # Return the predictions as a JSON response
 
 if __name__ == '__main__':

@@ -29,9 +29,17 @@
         <!-- Predictions -->
         <div style="width: 100%;">
             <h3>Preliminary Predictions:</h3>
-            <p>{{ predicted }}</p>
+            <p>Linear Regression</p>
+            <p>{{ lr_prediction[0] }}</p>
+            <p>{{ lr_prediction[1] }}</p>
+            <p>{{ lr_prediction[2] }}</p>
+            <p>Random Forest Regression</p>
+            <p>{{ rr_prediction[0] }}</p>
+            <p>{{ rr_prediction[1] }}</p>
+            <p>{{ rr_prediction[2] }}</p>
             <p style="color: red;">{{ discontinued }}</p>
         </div>
+
 
         <!-- Plot -->
         <img src="{{ url_for('static', filename='plots/' + filename) }}" alt="Generated Plot" style="max-width: 100%; height: auto;">
