@@ -3,31 +3,48 @@
 {% block title %}Course Projection Tool{% endblock %}
 
 {% block content %}
-    
-    <div class="content" style="display: flex; flex-direction: column; gap: 20px; align-items: flex-start;">
+<div class="container" style="margin-top: 400px; display: flex; flex-direction: column; gap: 20px;">
+    <!-- Back Button -->
+    <a href="{{ url_for('home', username=username) }}" class="btn btn-secondary mb-4">
+        ← Back to Home
+    </a>
 
-        <!-- Back Button -->
-        <a href="{{ url_for('home', username=username) }}" 
-           class="btn btn-secondary" 
-           style="align-self: flex-start; margin-bottom: 20px;">
-           ← Back to Home
-        </a>
-
-        <!-- Class Overview -->
-        <div style="width: 100%;">
-            <h2>{{ class_code }} Overview</h2>
-            <p>Class Name: {{ class_name }}</p>
+    <!-- Class Overview -->
+    <div class="card mb-4" style="flex: 1;">
+        <div class="card-body">
+            <h2 class="card-title">{{ class_code }} Overview</h2>
+            <p class="card-text">Class Name: {{ class_name }}</p>
         </div>
+    </div>
 
-        <!-- Enrollments -->
-        <div style="width: 100%;">
-            <h3>Class Enrollments Over the Years</h3>
-            <p>Fall: {{ fall }}</p>
-            <p>Spring: {{ spring }}</p>
+    <!-- Enrollments -->
+    <div class="card mb-4" style="flex: 1;">
+        <div class="card-body">
+            <h3 class="card-title">Class Enrollments Over the Years</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Semester</th>
+                        <th>Enrollments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Fall</td>
+                        <td>{{ fall }}</td>
+                    </tr>
+                    <tr>
+                        <td>Spring</td>
+                        <td>{{ spring }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+    </div>
 
-        <!-- Predictions -->
-        <div style="width: 100%;">
+    <!-- Predictions -->
+    <div class="card mb-4" style="flex: 1;">
+        <div class="card-body">
             <h3>Preliminary Predictions:</h3>
             <p>Linear Regression</p>
             <p>{{ lr_prediction[0] }}</p>
@@ -39,11 +56,13 @@
             <p>{{ rr_prediction[2] }}</p>
             <p style="color: red;">{{ discontinued }}</p>
         </div>
-
-
-        <!-- Plot -->
-        <img src="{{ url_for('static', filename='plots/' + filename) }}" alt="Generated Plot" style="max-width: 100%; height: auto;">
-
     </div>
 
+    <!-- Plot -->
+    <div class="card mb-4" style="flex: 1;">
+        <div class="card-body">
+            <img src="{{ url_for('static', filename='plots/' + filename) }}" alt="Generated Plot" class="img-fluid">
+        </div>
+    </div>
+</div>
 {% endblock %}
