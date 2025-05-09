@@ -77,15 +77,24 @@ def login_method(method):
         password = form.password.data
         first_name = check_credentials(ident, password)
         if first_name: 
-            return redirect(url_for('home', username=first_name))
+            session['username'] = first_name
+            return redirect(url_for('home'))
+            # return redirect(url_for('home', username=first_name))
+        
         flash("Invalid credentials. Please register first.")
         return redirect(url_for('login_method', method=method))
 
     return render_template("login.html", method=method, form=form)
 
-@app.route("/home/<username>")
+@app.route("/home")
 # This route shows the successful login and home page 
-def home(username):
+def home():
+    
+    username = session.get('username')
+    print(username)
+    if not username:
+        return redirect(url_for('login_method', method='default'))
+    
     return render_template("home.html", username=username)
 
 @app.route("/login-selection")
@@ -118,7 +127,11 @@ def check_credentials(identifier, password):
                     return first_name
     except FileNotFoundError:
         return False
-    
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for('login_method', method='default'))
 """ End of Related to the login functionality """
 
 def normalize_class_code(raw_code):
@@ -132,7 +145,7 @@ def normalize_class_code(raw_code):
         return f"{match.group(1).upper()} {match.group(2)}"
     return raw_code.upper()
 
-@app.route("/plot",  methods=['POST'])
+@app.route("/plot",  methods=['GET','POST'])
 def plot_data():
     """
     This method display all user input and display what we know about the class 
@@ -147,17 +160,46 @@ def plot_data():
 
     # Call import_data to generate the plot for the given class_code and semester
     filename, message = graph_data(class_code, sem)
-    if filename: 
+    if filename and message: 
+
         # Call get_class_info for some overview info 
-        class_name, fall, spring, discontinued = get_class_info(class_code)
+        class_name, fall, fyears, spring, syears, discontinued = get_class_info(class_code)
+
+        all_years = sorted(set(fyears + syears))
+
+        fall_data = {y: v for y, v in zip(fyears, fall)}
+        spring_data = {y: v for y, v in zip(syears, spring)}
+
+        aligned_fall = [fall_data.get(y, "—") for y in all_years]
+        aligned_spring = [spring_data.get(y, "—") for y in all_years]
 
         # Query the predictions 
         predicted_lr, predicted_rr = query_predictions(class_code, sem)
 
         username = request.form.get('username', 'Guest')
-        return render_template('result_page.html', filename=filename, class_code=class_code, class_name=class_name[0], fall=fall, spring=spring, discontinued=discontinued, lr_prediction=predicted_lr, rr_prediction=predicted_rr, username=username)
+        return render_template('result_page.html', filename=filename, class_code=class_code, class_name=class_name[0], fall=aligned_fall, years = all_years, spring=aligned_spring, discontinued=discontinued, lr_prediction=predicted_lr, rr_prediction=predicted_rr, username=username)
+    
+    elif (filename == None and message == None):
+        
+        # Call get_class_info for some overview info 
+        class_name, fall, fyears, spring, syears, discontinued = get_class_info(class_code)
+
+        all_years = sorted(set(fyears + syears))
+
+        fall_data = {y: v for y, v in zip(fyears, fall)}
+        spring_data = {y: v for y, v in zip(syears, spring)}
+
+        aligned_fall = [fall_data.get(y, "—") for y in all_years]
+        aligned_spring = [spring_data.get(y, "—") for y in all_years]
+
+        # Query the predictions 
+        predicted_lr, predicted_rr = query_predictions(class_code, sem)
+
+        username = request.form.get('username', 'Guest')
+        return render_template('result_page.html', filename=filename, class_code=class_code, class_name=class_name[0], fall=aligned_fall, years = all_years, spring=aligned_spring, discontinued=discontinued, lr_prediction=predicted_lr, rr_prediction=predicted_rr, username=username)
+    
     else: 
-        return render_template("home.html", error=message)
+        return render_template("home.html", username=session['username'], error=message)
     
 @app.route('/linear_regression/<semester>', methods=['GET', 'POST'])
 def trigger_regression(semester):

@@ -10,7 +10,7 @@ def get_class_info(class_code):
     This function fetches enrollment and headcount data from the database
     for the given class code and semester.
     param: class_code in form DEPT xxxx
-    return: class_name: the name of the class, fall_offerings: list of enrollment numbers in fall, spring_offerings:  list of enrollment numbers in spring, discontinued: whether the class is discontinued 
+    return: class_name: the name of the class, fall_offerings: list of enrollment numbers in fall, spring_offerings:  list of enrollment numbers in spring, discontinued: whether the class is discontinued
     """
 
     # Create a session
@@ -36,11 +36,14 @@ def get_class_info(class_code):
     fall_offerings = []
     try:
         fall_query = text("""
-            SELECT Enrollment FROM project_data.enrollment_data
+            SELECT Enrollment, Year FROM project_data.enrollment_data
             WHERE Class_Code = :class_code AND Semester = :semester
+            ORDER BY Year 
         """)
-        result = session.execute(fall_query, {"class_code": class_code, "semester": "Fall"})
+        result = session.execute(fall_query, {"class_code": class_code, "semester": "Fall"}).fetchall()
+
         fall_offerings = [row.Enrollment for row in result]
+        fall_years = [row.Year for row in result]
 
     except Exception as e:
         print("Error fetching data:", e)
@@ -51,11 +54,13 @@ def get_class_info(class_code):
     spring_offerings = []
     try:
         spring_query = text("""
-            SELECT Enrollment FROM project_data.enrollment_data
+            SELECT Enrollment, Year FROM project_data.enrollment_data
             WHERE Class_Code = :class_code AND Semester = :semester
+            ORDER BY Year
         """)
-        result = session.execute(spring_query, {"class_code": class_code, "semester": "Spring"})
+        result = session.execute(spring_query, {"class_code": class_code, "semester": "Spring"}).fetchall()
         spring_offerings = [row.Enrollment for row in result]
+        spring_years = [row.Year for row in result]
 
     except Exception as e:
         print("Error fetching data:", e)
@@ -77,4 +82,4 @@ def get_class_info(class_code):
         session.rollback()
         return
 
-    return class_name, fall_offerings, spring_offerings, discontinued
+    return class_name, fall_offerings, fall_years, spring_offerings, spring_years, discontinued

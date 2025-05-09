@@ -26,7 +26,7 @@ def graph_data(class_code, sem):
     try:
         enrollment_query = text("""
             SELECT Year, Enrollment FROM project_data.enrollment_data
-            WHERE semester = :semester AND class_code = :class_code AND Enrollment != 0
+            WHERE semester = :semester AND class_code = :class_code AND Enrollment > 0
             ORDER BY Year
         """)
         result = session.execute(enrollment_query, {"semester": sem, "class_code": class_code})
@@ -38,7 +38,26 @@ def graph_data(class_code, sem):
         print(erll_available_years)
 
         if not X2_vals:
-            return (None, "Class code does not exist in our database. Do you mean something else?")
+            # If a semester is in the Fall 
+            if sem == "Fall": 
+                o_sem = "Spring"
+            else: 
+                o_sem = "Fall"
+            
+            # Check if the data in the other semester exists
+            query = text("""
+                SELECT 1 
+                FROM project_data.enrollment_data
+                WHERE semester = :semester AND class_code = :class_code AND Enrollment > 0
+            """)
+
+            result_2 = session.execute(query, {"semester": o_sem, "class_code": class_code}).fetchone()
+            # If it exists 
+            if result_2: 
+                return (None, None)
+            # If it does not exist, then we return this 
+            else: 
+                return (None, "Class code does not exist in our database. Do you mean something else?")
             
     except Exception as e:
         print("Error fetching enrollment data:", e)
@@ -73,7 +92,7 @@ def graph_data(class_code, sem):
         session.rollback()
         return
        
-    filename = f'{class_code.replace(" ", "")}_plot.png'
+    filename = f'{class_code.replace(" ", "")}_plot_{sem}.png'
 
     try:
         with open(f'static/plots/{filename}'):
@@ -87,7 +106,7 @@ def graph_data(class_code, sem):
 
         # Labels and title
         plt.xlabel("Year")
-        plt.xticks(erll_available_years)
+        plt.xticks(erll_available_years[::2])
         plt.ylabel("Count")
         plt.title(f"Headcount vs Enrollment Trend for {class_code} ({sem})")
         plt.legend()

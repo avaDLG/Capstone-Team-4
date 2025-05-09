@@ -3,9 +3,136 @@
 {% block title %}Course Projection Tool{% endblock %}
 
 {% block content %}
-<div class="container" style="margin-top: 400px; display: flex; flex-direction: column; gap: 20px;">
+<style>
+    .back-button {
+        display: inline-block;
+        width: fit-content;
+        padding: 12px 24px;
+        background-color: #b71c1c;
+        color: white;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .back-button:hover {
+        background-color: #8a0000;
+        transform: translateY(-2px);
+    }
+
+    .card {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+        margin-bottom: 24px;
+        flex: 1;
+    }
+
+    .card-body {
+        padding: 0;
+    }
+
+    .card-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #b71c1c;
+        margin-bottom: 12px;
+    }
+
+    .card-text {
+        font-size: 16px;
+        color: #333;
+        margin: 6px 0;
+    }
+
+    /* Table Styling */
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+        font-size: 15px;
+    }
+
+    .table thead {
+        background-color: #b71c1c;
+        color: white;
+    }
+
+    .table th,
+    .table td {
+        padding: 12px 16px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .table tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .table tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Responsive Image */
+    .img-fluid {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-top: 12px;
+    }
+
+    .page-content {
+        margin-top: 900px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .prediction-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+        font-size: 15px;
+    }
+
+    .prediction-table thead {
+        background-color: #b71c1c;
+        color: white;
+    }
+
+    .prediction-table th,
+    .prediction-table td {
+        padding: 12px 16px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        vertical-align: top;
+    }
+
+    .prediction-table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    .prediction-table tr:hover {
+        background-color: #f1f1f1;
+    }
+    .table-responsive {
+        overflow-x: auto;
+        width: 100%;
+    }
+
+    .table {
+        min-width: max-content; /* ensures table won't squish */
+        width: auto;
+    }
+</style>
+<div class="page-content">
     <!-- Back Button -->
-    <a href="{{ url_for('home', username=username) }}" class="btn btn-secondary mb-4">
+    <a href="{{ url_for('home', username=username) }}" class="back-button">
         ← Back to Home
     </a>
 
@@ -21,48 +148,84 @@
     <div class="card mb-4" style="flex: 1;">
         <div class="card-body">
             <h3 class="card-title">Class Enrollments Over the Years</h3>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Semester</th>
-                        <th>Enrollments</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Fall</td>
-                        <td>{{ fall }}</td>
-                    </tr>
-                    <tr>
-                        <td>Spring</td>
-                        <td>{{ spring }}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Semester</th>
+                            {% for year in years %}
+                                <th>{{ year }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Spring </strong></td>
+                            {% for enrollment in spring %}
+                                <td>{{ enrollment }}</td>
+                            {% endfor %}
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td><strong>Fall </strong></td>
+                            {% for enrollment in fall %}
+                                <td>{{ enrollment }}</td>
+                            {% endfor %}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+        {% if filename %}
+        <div class="card-body">
+            <img src="{{ url_for('static', filename='plots/' + filename) }}" alt="Generated Plot" class="img-fluid">
+        </div>
+        {% endif %}
     </div>
 
     <!-- Predictions -->
     <div class="card mb-4" style="flex: 1;">
         <div class="card-body">
             <h3>Preliminary Predictions:</h3>
-            <p>Linear Regression</p>
-            <p>{{ lr_prediction[0] }}</p>
-            <p>{{ lr_prediction[1] }}</p>
-            <p>{{ lr_prediction[2] }}</p>
-            <p>Random Forest Regression</p>
-            <p>{{ rr_prediction[0] }}</p>
-            <p>{{ rr_prediction[1] }}</p>
-            <p>{{ rr_prediction[2] }}</p>
+            <table class="prediction-table">
+                <thead>
+                    <tr>
+                        <th>Linear Regression</th>
+                        <th>Random Forest Regression</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Semester: {{ lr_prediction[0] }}</td>
+                        <td>Semester: {{ rr_prediction[0] }}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% if lr_prediction and lr_prediction[1] %}
+                                Enrollment count: {{ lr_prediction[1] }}
+                            {% else %}
+                                Enrollment count: N/A
+                            {% endif %}
+                        </td>
+                        <td>Enrollment count: {{ rr_prediction[1] }}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {% if lr_prediction and lr_prediction[2] %}
+                                Note: {{ lr_prediction[2] }}
+                            {% else %}
+                                Note: N/A
+                            {% endif %}
+                        </td>
+                        <td>Note: {{ rr_prediction[2] }}</td>
+                    </tr>
+                </tbody>
+            </table>
             <p style="color: red;">{{ discontinued }}</p>
         </div>
     </div>
 
-    <!-- Plot -->
-    <div class="card mb-4" style="flex: 1;">
-        <div class="card-body">
-            <img src="{{ url_for('static', filename='plots/' + filename) }}" alt="Generated Plot" class="img-fluid">
-        </div>
-    </div>
+
 </div>
 {% endblock %}
