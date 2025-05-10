@@ -24,7 +24,11 @@ Milestone 4 (M4): A few initial system tests were created, and the frontend was 
 
 Milestone 5 (M5):  Testing was created to ensure the integrity of the system under multiple scenarios. The RF model is finalized. Finalized the webpage looks and displayed other information about the clas that can be powerful for users' decisions. 
  
- Features
+3. Branches
+
+ The 'main' branch has all of the work that we have pushed that does run sucessfully.
+ 
+# Features
  
  🔐 Authenticated Login
  Secure login system for user access control.
@@ -43,8 +47,4 @@ Milestone 5 (M5):  Testing was created to ensure the integrity of the system und
  
  🌐 Dynamic Frontend Rendering
  Jinja2 templates render intuitive and responsive interfaces.
-   
-3. Branches
-
- The 'main' branch has all of the work that we have pushed that does run sucessfully.
 
