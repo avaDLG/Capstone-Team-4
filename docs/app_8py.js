@@ -19,7 +19,6 @@ var app_8py =
     [ "app.CRED_FILE", "namespaceapp.html#a6f1a00e1989ca4bd40804b73000f044b", null ],
     [ "app.debug", "namespaceapp.html#ab4a362027d4aa3246e0e0f57ebf177b0", null ],
     [ "app.exist_ok", "namespaceapp.html#a97bdb13d7957840ceca71b0a885928b1", null ],
-    [ "app.host", "namespaceapp.html#a7fa7c11c7474c128736b1d34b15a0d5e", null ],
     [ "app.port", "namespaceapp.html#ae996542be63ac459a38531f7c2dd0a49", null ],
     [ "app.True", "namespaceapp.html#a4f14203a53500e8593c3e2fec9ace1e8", null ]
 ];

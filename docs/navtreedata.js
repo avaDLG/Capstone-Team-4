@@ -26,7 +26,8 @@ var NAVTREE =
 [
   [ "CAPSTONE PROJECT TEAM 4", "index.html", [
     [ "Capstone-Team-4", "md__r_e_a_d_m_e.html", [
-      [ "Code Milestone 4", "md__r_e_a_d_m_e.html#autotoc_md1", null ]
+      [ "Code Milestone 5", "md__r_e_a_d_m_e.html#autotoc_md1", null ],
+      [ "Features", "md__r_e_a_d_m_e.html#autotoc_md2", null ]
     ] ],
     [ "Packages", "namespaces.html", [
       [ "Package List", "namespaces.html", "namespaces_dup" ],

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['identifier_0',['identifier',['../classapp_1_1_login_form.html#a40f2438cc47bc20cc11127ecf933e209',1,'app::LoginForm']]],
-  ['index_1',['index',['../namespaceapp.html#a4727fbeb35bed8ec5000ba2eb4cec4a7',1,'app']]]
+  ['handle_5fregister_0',['handle_register',['../namespaceapp.html#a4c3500e6e8ba6b131c6391756eba8f1f',1,'app']]],
+  ['highlight_1',['highlight',['../namespacetest__selenium.html#a2f24c3139bd78d176bf6441621f33808',1,'test_selenium']]],
+  ['home_2',['home',['../namespaceapp.html#ad9c2cdedb81925392375e58250fc2ffb',1,'app']]]
 ];
